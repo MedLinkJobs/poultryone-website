@@ -47,7 +47,9 @@
   img,svg{display:block;max-width:100%;}
   button{font-family:inherit;cursor:pointer;}
   .container{max-width:1200px;margin:0 auto;padding:0 24px;}
-  * , *::before, *::after { transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; }
+  a, button, .btn, .nav-link, .product-card, .feature-tile, .blog-card, .module-card, .info-card, .mission-card, .vision-card, .testimonial-card {
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
 
   /* ---------- Scroll Progress Bar ---------- */
   #scroll-progress{
@@ -137,8 +139,9 @@
   }
   .hero-mesh{
     position:absolute;inset:-20%;z-index:0;pointer-events:none;
+    contain:layout paint;
   }
-  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:0.15;}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:0.15;will-change:transform;}
   .blob-1{width:600px;height:600px;background:var(--brand-orange);top:-10%;left:-5%;animation:float1 18s ease-in-out infinite;}
   .blob-2{width:500px;height:500px;background:var(--brand-navy);top:20%;right:-10%;animation:float2 22s ease-in-out infinite;}
   .blob-3{width:450px;height:450px;background:#0A0A0F;background:var(--brand-orange);bottom:-15%;left:20%;animation:float3 26s ease-in-out infinite;}
