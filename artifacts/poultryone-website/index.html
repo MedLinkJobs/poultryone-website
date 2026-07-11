@@ -892,7 +892,7 @@
             <a href="#" class="app-login-btn" style="background:#163A75;" aria-label="Breeder Management application login">Breeder Login</a>
             <a href="#" class="app-login-btn" style="background:#2E8FD0;" aria-label="Hatchery Management application login">Hatchery Login</a>
             <a href="#" class="app-login-btn" style="background:#17786E;" aria-label="Feed Mill Management application login">Feed Mill Login</a>
-            <a href="#" class="app-login-btn" style="background:#45508F;" aria-label="Chicken Suppliers application login">Supplier Login</a>
+            <a href="https://supplier.poultryone.in" class="app-login-btn" style="background:#45508F;" aria-label="Chicken Suppliers application login">Supplier Login</a>
           </div>
         </div>
       </div>
@@ -1086,7 +1086,7 @@
 
   var PRODUCT_PAGES = {
     broiler:{
-      id:"broiler", name:"Broiler Management", pillName:"Broiler Management",
+      id:"broiler", name:"Broiler Management", pillName:"Broiler Management", loginUrl:"https://app.poultryone.in",
       accent:["#F26A1B","#FF8A3D"],
       headline:"From Day-Old Chick to Harvest — Total Batch Control",
       sub:"PoultryOne Broiler tracks every gram of feed, every bird lost, and every kilogram harvested across your entire broiler operation — in real time.",
@@ -1136,7 +1136,7 @@
       ctaSub:"Join operators already running paperless batches on PoultryOne Broiler."
     },
     layer:{
-      id:"layer", name:"Layer Management", pillName:"Layer Management",
+      id:"layer", name:"Layer Management", pillName:"Layer Management", loginUrl:"https://app.poultryone.in",
       accent:["#F4A521","#FFC24D"],
       headline:"72-Week Layer Cycles. Every Egg Counted.",
       sub:"From pullet housing to peak lay and end-of-cycle — PoultryOne Layer tracks Hen Day production, egg grading, and commercial egg inventory with zero manual registers.",
@@ -1185,7 +1185,7 @@
       ctaSub:"Track every egg from pullet to end-of-cycle with PoultryOne Layer."
     },
     breeder:{
-      id:"breeder", name:"Breeder Management", pillName:"Breeder Management",
+      id:"breeder", name:"Breeder Management", pillName:"Breeder Management", loginUrl:"https://app.poultryone.in",
       accent:["#163A75","#2E5EA0"],
       headline:"Breeding the Next Generation. Managed Down to the Egg.",
       sub:"PoultryOne Breeder connects your flock's hatching egg output directly to the hatchery — tracking male-female ratios, egg quality grades, and cold-room inventory with full traceability.",
@@ -1235,7 +1235,7 @@
       ctaSub:"Connect flock output straight to the hatchery with full traceability."
     },
     hatchery:{
-      id:"hatchery", name:"Hatchery Management", pillName:"Hatchery Management",
+      id:"hatchery", name:"Hatchery Management", pillName:"Hatchery Management", loginUrl:"https://app.poultryone.in",
       accent:["#2E8FD0","#57B0E6"],
       headline:"Every Egg Set. Every Chick Counted.",
       sub:"PoultryOne Hatchery takes hatching eggs from intake through incubation, candling, hatching, and chick dispatch — with full traceability back to the source breeder flock and forward to the farm placement.",
@@ -1284,7 +1284,7 @@
       ctaSub:"Trace every chick back to source and forward to placement, automatically."
     },
     feedmill:{
-      id:"feedmill", name:"Feed Mill Management", pillName:"Feed Mill Management",
+      id:"feedmill", name:"Feed Mill Management", pillName:"Feed Mill Management", loginUrl:"https://app.poultryone.in",
       accent:["#17786E","#2AA093"],
       headline:"From Raw Ingredient to Farm Gate — Every Kilogram Costed.",
       sub:"PoultryOne Feed Mill manages raw material stock, feed formulations with live nutritional profiles, batch manufacturing, QC approvals, and finished feed dispatch — all traceable to the farm that uses it.",
@@ -1335,7 +1335,7 @@
       ctaSub:"Cost every kilogram from raw ingredient to farm gate, automatically."
     },
     supplier:{
-      id:"supplier", name:"Chicken Suppliers", pillName:"Chicken Suppliers",
+      id:"supplier", name:"Chicken Suppliers", pillName:"Chicken Suppliers", loginUrl:"https://supplier.poultryone.in",
       accent:["#45508F","#6470B5"],
       headline:"Buy from Farms. Sell to Stores. Profit — Daily, Without Paperwork.",
       sub:"PoultryOne for Chicken Suppliers digitises the live chicken supply chain: farm purchases, shop deliveries, WhatsApp bills, cash and credit ledgers, and daily P&L — all on your phone.",
@@ -1423,7 +1423,7 @@
           '<p class="sub">'+p.sub+'</p>'+
           '<div class="stat-pill-row">'+statsHtml+'</div>'+
           '<div class="product-cta-row">'+
-            '<a href="#" class="btn btn-lg btn-accent">Login to App</a>'+
+            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-accent">Login to App</a>'+
             '<a href="#" class="btn btn-lg btn-outline" onclick="showPage(\'contact\');return false;">Request Demo</a>'+
           '</div>'+
         '</div>'+
@@ -1456,7 +1456,7 @@
           '<h2>Ready to digitise your '+p.ctaType+'?</h2>'+
           '<p>'+p.ctaSub+'</p>'+
           '<div class="product-cta-row">'+
-            '<a href="#" class="btn btn-lg btn-white">Login to App</a>'+
+            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-white">Login to App</a>'+
             '<a href="#" class="btn btn-lg btn-outline-white" onclick="showPage(\'contact\');return false;">Request Demo</a>'+
           '</div>'+
         '</div>'+
