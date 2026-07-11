@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>PoultryOne — The Poultry Industry's Operating System</title>
+<meta name="description" content="PoultryOne — The Poultry Industry's Operating System. Six specialised applications for broiler farms, layer farms, breeder farms, hatcheries, feed mills, and chicken suppliers." />
+<meta name="keywords" content="poultry management software, broiler ERP, layer farm software, hatchery management, feed mill ERP, chicken supplier app, India" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#F26A1B" />
+<meta property="og:title" content="PoultryOne — The Poultry Industry's Operating System" />
+<meta property="og:description" content="Six purpose-built applications covering every role in the poultry value chain." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PoultryOne — The Poultry Industry's Operating System" />
+<meta name="twitter:description" content="One platform. Six specialised applications for the poultry value chain." />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-orange:#F26A1B;
+    --brand-orange-2:#FFC24D;
+    --brand-navy:#163A75;
+    --bg:#0A0A0F;
+    --surface:#13131A;
+    --surface2:#1A1A24;
+    --border:#1E1E2E;
+    --text:#F0F0F5;
+    --text-2:#8A8A9A;
+    --text-3:#4A4A5A;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  * , *::before, *::after { transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; }
+
+  /* ---------- Scroll Progress Bar ---------- */
+  #scroll-progress{
+    position:fixed;top:0;left:0;height:3px;width:0%;
+    background:linear-gradient(90deg,var(--brand-orange),var(--brand-orange-2));
+    z-index:9999;
+  }
+
+  /* ---------- Navbar ---------- */
+  nav.navbar{
+    position:sticky;top:0;left:0;right:0;z-index:1000;
+    background:rgba(10,10,15,0.72);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+  }
+  nav.navbar.scrolled{
+    border-bottom:1px solid var(--border);
+    background:rgba(10,10,15,0.92);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:72px;
+  }
+  .nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:#fff;}
+  .nav-links{display:flex;align-items:center;gap:8px;}
+  .nav-link{
+    position:relative;padding:10px 16px;border-radius:8px;font-size:14.5px;font-weight:500;
+    color:var(--text-2);
+  }
+  .nav-link:hover{color:#fff;background:rgba(255,255,255,0.04);}
+  .nav-link.active{color:var(--brand-orange);}
+  .nav-item-dropdown{position:relative;}
+  .dropdown-caret{font-size:10px;margin-left:4px;opacity:0.7;}
+  .products-dropdown{
+    position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-8px);
+    width:420px;background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:6px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    opacity:0;pointer-events:none;z-index:1001;
+  }
+  .nav-item-dropdown.open .products-dropdown,
+  .nav-item-dropdown:hover .products-dropdown{
+    opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);
+  }
+  .dropdown-tile{
+    display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;
+  }
+  .dropdown-tile:hover{background:var(--surface2);}
+  .dropdown-icon{
+    width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .dropdown-icon svg{width:18px;height:18px;}
+  .dropdown-tile span{font-size:13.5px;font-weight:500;color:var(--text);}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 26px;border-radius:999px;font-weight:600;font-size:14.5px;border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-lg{padding:15px 32px;font-size:15.5px;}
+  .btn-primary{background:var(--brand-orange);color:#fff;}
+  .btn-primary:hover{background:#ff7a2e;transform:translateY(-1px);box-shadow:0 10px 30px rgba(242,106,27,0.35);}
+  .btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,0.25);}
+  .btn-outline:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.5);}
+
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;}
+  .hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;}
+  .mobile-menu{
+    display:none;flex-direction:column;gap:2px;padding:12px 24px 24px;
+    background:rgba(10,10,15,0.98);border-bottom:1px solid var(--border);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:12px 4px;font-size:15px;color:var(--text-2);border-bottom:1px solid var(--border);}
+  .mobile-menu a:last-child{border-bottom:none;}
+  .mobile-dropdown-group{display:flex;flex-direction:column;}
+  .mobile-dropdown-toggle{display:flex;align-items:center;justify-content:space-between;}
+  .mobile-sublinks{display:none;flex-direction:column;padding-left:14px;}
+  .mobile-sublinks.open{display:flex;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    padding:120px 0 60px;overflow:hidden;
+  }
+  .hero-mesh{
+    position:absolute;inset:-20%;z-index:0;pointer-events:none;
+  }
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:0.15;}
+  .blob-1{width:600px;height:600px;background:var(--brand-orange);top:-10%;left:-5%;animation:float1 18s ease-in-out infinite;}
+  .blob-2{width:500px;height:500px;background:var(--brand-navy);top:20%;right:-10%;animation:float2 22s ease-in-out infinite;}
+  .blob-3{width:450px;height:450px;background:#0A0A0F;background:var(--brand-orange);bottom:-15%;left:20%;animation:float3 26s ease-in-out infinite;}
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(60px,40px) scale(1.15);}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-50px,60px) scale(0.9);}}
+  @keyframes float3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,-40px) scale(1.1);}}
+
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.5fr 1fr;gap:60px;align-items:center;}
+  .badge-pill{
+    display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+    border:1px solid rgba(242,106,27,0.4);color:var(--brand-orange);font-size:13px;font-weight:600;
+    margin-bottom:24px;
+  }
+  .pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--brand-orange);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(242,106,27,0.6);}70%{box-shadow:0 0 0 8px rgba(242,106,27,0);}100%{box-shadow:0 0 0 0 rgba(242,106,27,0);}}
+
+  .hero h1{font-size:72px;font-weight:800;line-height:1.05;letter-spacing:-0.02em;margin-bottom:24px;}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--brand-orange),var(--brand-orange-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p.sub{font-size:20px;color:var(--text-2);max-width:560px;margin-bottom:36px;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:52px;}
+
+  .stat-bar{display:flex;gap:0;flex-wrap:wrap;}
+  .stat-item{padding:0 28px;border-right:1px solid var(--border);}
+  .stat-item:first-child{padding-left:0;}
+  .stat-item:last-child{border-right:none;}
+  .stat-number{font-size:28px;font-weight:800;color:#fff;display:block;}
+  .stat-label{font-size:13px;color:var(--text-2);margin-top:4px;}
+
+  .dashboard-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;
+    box-shadow:0 0 0 1px rgba(242,106,27,0.05), 0 30px 80px rgba(0,0,0,0.5);
+  }
+  .mac-dots{display:flex;gap:6px;margin-bottom:10px;}
+  .mac-dots span{width:10px;height:10px;border-radius:50%;}
+  .mac-dots span:nth-child(1){background:#ff5f57;}
+  .mac-dots span:nth-child(2){background:#febc2e;}
+  .mac-dots span:nth-child(3){background:#28c840;}
+  .dashboard-label{font-size:13px;color:var(--text-2);margin-bottom:18px;font-weight:500;}
+  .kpi-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--border);}
+  .kpi-row:first-of-type{border-top:none;}
+  .kpi-bar{width:4px;height:32px;border-radius:2px;}
+  .kpi-info{flex:1;}
+  .kpi-label{font-size:12.5px;color:var(--text-2);}
+  .kpi-value{font-size:19px;font-weight:700;color:#fff;}
+  .kpi-badge{font-size:11.5px;font-weight:700;color:#28c840;background:rgba(40,200,64,0.12);padding:4px 8px;border-radius:6px;}
+
+  .mini-chart{display:flex;align-items:flex-end;gap:8px;height:70px;margin:20px 0 8px;}
+  .mini-bar{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--brand-orange-2),var(--brand-orange));}
+  .chart-labels{display:flex;gap:8px;margin-bottom:16px;}
+  .chart-labels span{flex:1;text-align:center;font-size:10.5px;color:var(--text-3);}
+
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .mini-pill{font-size:11.5px;font-weight:600;padding:6px 10px;border-radius:999px;background:var(--surface2);color:var(--text-2);}
+
+  /* ---------- Section shared ---------- */
+  .section{padding:110px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 60px;}
+  .section-label{font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand-orange);margin-bottom:14px;}
+  .section-head h2{font-size:42px;font-weight:800;letter-spacing:-0.01em;margin-bottom:16px;}
+  .section-head p{font-size:17px;color:var(--text-2);}
+
+  /* ---------- Products Grid ---------- */
+  .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .product-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:28px;display:flex;flex-direction:column;gap:14px;
+  }
+  .product-card:hover{border-color:rgba(242,106,27,0.35);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.35);}
+  .product-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;}
+  .product-card h3{font-size:19px;font-weight:700;color:#fff;}
+  .product-card p.desc{font-size:14.5px;color:var(--text-2);flex:1;}
+  .product-metrics{display:flex;flex-wrap:wrap;gap:6px;}
+  .metric-chip{font-size:11.5px;color:var(--text-3);background:var(--surface2);padding:5px 9px;border-radius:6px;}
+  .learn-more{font-size:14px;font-weight:700;margin-top:4px;}
+
+  /* ---------- Marquee ---------- */
+  .marquee-wrap{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 0;overflow:hidden;}
+  .marquee-track{display:flex;width:max-content;gap:0;animation:marquee 32s linear infinite;}
+  .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
+  .marquee-item{display:inline-flex;align-items:center;gap:10px;padding:0 26px;font-size:15px;white-space:nowrap;}
+  .marquee-item b{color:var(--brand-orange);font-weight:800;}
+  .marquee-item span.label{color:var(--text-2);}
+  .marquee-dot{color:var(--text-3);}
+  @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* ---------- Value Prop ---------- */
+  .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;}
+  .value-col{text-align:left;}
+  .value-icon{font-size:34px;margin-bottom:18px;}
+  .value-col h3{font-size:19px;font-weight:700;margin-bottom:12px;color:#fff;}
+  .value-col p{font-size:15px;color:var(--text-2);}
+
+  /* ---------- Testimonials ---------- */
+  .testimonial-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .testimonial-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;
+  }
+  .testimonial-card p.quote{font-size:16px;color:var(--text);margin-bottom:20px;line-height:1.6;}
+  .testimonial-card p.quote::before{content:"\201C";color:var(--brand-orange);font-size:22px;font-weight:800;margin-right:2px;}
+  .testimonial-author{font-size:13.5px;color:var(--text-2);font-weight:500;}
+  .testimonial-author b{color:#fff;}
+
+  /* ---------- Footer ---------- */
+  footer{background:#080810;border-top:1px solid var(--border);padding:70px 0 24px;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px;}
+  .footer-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:#fff;margin-bottom:14px;}
+  .footer-tagline{font-size:14px;color:var(--text-2);margin-bottom:22px;max-width:260px;}
+  .social-row{display:flex;gap:10px;}
+  .social-circle{
+    width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-2);
+  }
+  .social-circle:hover{color:#fff;border-color:var(--brand-orange);}
+  .footer-col h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-3);margin-bottom:18px;}
+  .footer-col a, .footer-col p{display:block;font-size:14.5px;color:var(--text-2);margin-bottom:12px;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;border-top:1px solid var(--border);
+    font-size:13px;color:var(--text-3);
+  }
+  .footer-bottom a{color:var(--text-3);}
+  .footer-bottom a:hover{color:var(--text-2);}
+
+  /* ---------- Generic sub-page ---------- */
+  .subpage-hero{padding:160px 0 90px;text-align:center;}
+  .subpage-hero .section-label{justify-content:center;display:flex;}
+  .subpage-hero h1{font-size:52px;font-weight:800;margin-bottom:18px;letter-spacing:-0.01em;}
+  .subpage-hero p{font-size:18px;color:var(--text-2);max-width:640px;margin:0 auto 30px;}
+
+  /* ---------- Product Detail Pages ---------- */
+  .product-page-hero{position:relative;padding:150px 0 90px;overflow:hidden;}
+  .product-hero-glow{position:absolute;top:-220px;right:-220px;width:700px;height:700px;border-radius:50%;background:var(--accent);opacity:0.08;filter:blur(100px);pointer-events:none;}
+  .product-hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:center;}
+  .product-pill{display:inline-flex;align-items:center;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:22px;color:var(--accent);border:1px solid var(--accent);}
+  .product-hero-grid h1{font-size:46px;font-weight:800;line-height:1.14;letter-spacing:-0.01em;margin-bottom:20px;}
+  .product-hero-grid p.sub{font-size:17px;color:var(--text-2);margin-bottom:30px;max-width:560px;}
+  .stat-pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px;}
+  .stat-pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px;background:var(--surface2);border:1px solid var(--border);color:var(--text);}
+  .product-cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-accent{background:var(--accent);color:#fff;}
+  .btn-accent:hover{filter:brightness(1.12);transform:translateY(-1px);}
+
+  .product-mockup-header{font-size:13px;color:var(--text-2);margin-bottom:18px;font-weight:500;}
+  .product-kpi-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--border);}
+  .product-kpi-row:first-of-type{border-top:none;}
+  .product-kpi-bar{width:4px;height:32px;border-radius:2px;background:var(--accent);flex-shrink:0;}
+  .product-kpi-label{font-size:12.5px;color:var(--text-2);}
+  .product-kpi-value{font-size:17px;font-weight:700;color:#fff;}
+
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .feature-tile{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;}
+  .feature-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;}
+  .feature-tile h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;}
+  .feature-tile p{font-size:14px;color:var(--text-2);line-height:1.55;}
+
+  .workflow-track{display:flex;align-items:flex-start;gap:4px;flex-wrap:wrap;justify-content:space-between;}
+  .workflow-stage{display:flex;flex-direction:column;align-items:center;text-align:center;flex:1;min-width:120px;padding:0 6px;}
+  .workflow-num{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:14px;flex-shrink:0;}
+  .workflow-stage h4{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:6px;}
+  .workflow-stage p{font-size:12px;color:var(--text-2);line-height:1.5;}
+  .workflow-arrow{color:var(--text-3);font-size:18px;padding-top:12px;flex-shrink:0;}
+
+  .metrics-band{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:70px 0;}
+  .metrics-band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center;}
+  .metric-big{font-size:52px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .metric-underline{width:40px;height:4px;background:var(--accent);border-radius:2px;margin:0 auto 12px;}
+  .metric-small-label{font-size:15px;color:var(--text-2);}
+
+  .module-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .module-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:20px 22px;}
+  .module-card h4{font-size:15.5px;font-weight:700;color:#fff;margin-bottom:6px;}
+  .module-card p{font-size:13.5px;color:var(--text-2);}
+
+  .product-cta-banner{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:28px;padding:70px 50px;text-align:center;}
+  .product-cta-banner h2{font-size:34px;font-weight:800;color:#fff;margin-bottom:14px;}
+  .product-cta-banner p{font-size:16px;color:rgba(255,255,255,0.85);margin-bottom:30px;max-width:560px;margin-left:auto;margin-right:auto;}
+  .product-cta-banner .product-cta-row{justify-content:center;}
+  .btn-white{background:#fff;color:#111;}
+  .btn-white:hover{background:#f0f0f0;}
+  .btn-outline-white{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.6);}
+  .btn-outline-white:hover{background:rgba(255,255,255,0.15);}
+
+  /* ---------- Page fade transition ---------- */
+  [data-page]{opacity:1;}
+  [data-page].fade-in{animation:pageFadeIn 0.3s ease;}
+  @keyframes pageFadeIn{from{opacity:0;}to{opacity:1;}}
+
+  /* ---------- Active nav dot indicator ---------- */
+  .nav-link.active::after{
+    content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);
+    width:5px;height:5px;border-radius:50%;background:var(--brand-orange);
+  }
+
+  /* ---------- About Page ---------- */
+  .mission-vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .mission-card,.vision-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;}
+  .mission-card{border-left:4px solid var(--brand-orange);}
+  .vision-card{border-left:4px solid var(--brand-navy);}
+  .mission-card h3,.vision-card h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:14px;}
+  .mission-card p,.vision-card p{font-size:15px;color:var(--text-2);line-height:1.65;}
+
+  /* ---------- Blog Page ---------- */
+  .tag-pill{display:inline-flex;padding:5px 12px;border-radius:999px;font-size:11.5px;font-weight:700;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.03em;}
+  .tag-guide,.tag-broiler{background:rgba(242,106,27,0.15);color:#FF8A3D;}
+  .tag-layer{background:rgba(244,165,33,0.15);color:#FFC24D;}
+  .tag-feedmill{background:rgba(23,120,110,0.18);color:#2AA093;}
+  .tag-hatchery{background:rgba(46,143,208,0.18);color:#57B0E6;}
+  .tag-breeder{background:rgba(22,58,117,0.25);color:#7DA0DE;}
+  .tag-supplier{background:rgba(69,80,143,0.25);color:#9AA3E0;}
+
+  .featured-post{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--brand-orange);border-radius:var(--radius);padding:40px;}
+  .featured-post h2{font-size:26px;font-weight:800;color:#fff;margin-bottom:14px;line-height:1.3;}
+  .featured-post p{font-size:15.5px;color:var(--text-2);line-height:1.65;margin-bottom:18px;max-width:760px;}
+  .blog-meta{font-size:13px;color:var(--text-3);margin-bottom:14px;}
+
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:4px;}
+  .blog-card h3{font-size:16.5px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:6px;}
+  .blog-card p{font-size:14px;color:var(--text-2);flex:1;margin-bottom:12px;}
+  .coming-soon-badge{align-self:flex-start;font-size:11.5px;font-weight:600;color:var(--text-3);background:var(--surface2);padding:5px 10px;border-radius:6px;margin-top:4px;}
+
+  .newsletter-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:48px;text-align:center;max-width:560px;margin:0 auto;}
+  .newsletter-card h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:22px;}
+  .newsletter-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .newsletter-form input{flex:1;min-width:220px;padding:13px 16px;border-radius:999px;border:1px solid var(--border);background:#1E1E2E;color:#fff;font-size:14.5px;}
+  .newsletter-form input:focus{outline:none;border-color:var(--brand-orange);box-shadow:0 0 0 3px rgba(242,106,27,0.2);}
+
+  /* ---------- Contact Page ---------- */
+  .contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start;}
+  .demo-form-card{background:var(--surface);border:1px solid var(--border);border-top:2px solid var(--brand-orange);border-radius:16px;padding:36px;}
+  .demo-form-card h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:24px;}
+  .form-group{margin-bottom:18px;display:flex;flex-direction:column;gap:8px;}
+  .form-group label{font-size:13.5px;font-weight:600;color:var(--text-2);}
+  .form-group input,.form-group select,.form-group textarea{
+    background:#1E1E2E;border:1px solid var(--border);border-radius:10px;padding:12px 14px;
+    color:#fff;font-size:14.5px;font-family:inherit;resize:vertical;width:100%;
+  }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+    outline:none;border-color:var(--brand-orange);box-shadow:0 0 0 3px rgba(242,106,27,0.2);
+  }
+  .form-disclaimer{font-size:13px;color:var(--text-3);text-align:center;margin-top:14px;}
+
+  .contact-info-col{display:flex;flex-direction:column;gap:20px;}
+  .info-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--brand-orange);border-radius:12px;padding:24px;}
+  .info-icon{font-size:24px;margin-bottom:10px;}
+  .info-card h4{font-size:15.5px;font-weight:700;color:#fff;margin-bottom:6px;}
+  .info-card p{font-size:14px;color:var(--text-2);margin-bottom:4px;}
+  .info-highlight{font-weight:700;color:#fff !important;}
+
+  .already-using{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;}
+  .already-using h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:16px;}
+  .app-login-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .app-login-btn{display:flex;align-items:center;justify-content:center;padding:10px 8px;border-radius:8px;color:#fff;font-size:12.5px;font-weight:700;text-align:center;}
+  .app-login-btn:hover{filter:brightness(1.15);transform:translateY(-2px);}
+
+  /* ---------- 404 ---------- */
+  .notfound-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:56px;text-align:center;max-width:420px;}
+  .notfound-card h2{font-size:26px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .notfound-card p{font-size:15px;color:var(--text-2);margin-bottom:26px;}
+
+  /* ---------- Hover lifts (final polish) ---------- */
+  .feature-tile,.blog-card,.module-card,.info-card,.mission-card,.vision-card,.testimonial-card{
+    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .feature-tile:hover,.blog-card:hover,.module-card:hover,.info-card:hover,.testimonial-card:hover{
+    transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1023px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:52px;}
+    .products-grid{grid-template-columns:repeat(2,1fr);}
+    .value-grid{grid-template-columns:1fr;gap:44px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
+    .product-hero-grid{grid-template-columns:1fr;}
+    .feature-grid{grid-template-columns:1fr 1fr;}
+    .workflow-track{flex-direction:column;align-items:stretch;gap:20px;}
+    .workflow-arrow{display:none;}
+    .metrics-band-grid{grid-template-columns:1fr 1fr;gap:36px 20px;}
+    .mission-vision-grid{grid-template-columns:1fr;}
+    .blog-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width: 767px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .hero{padding:110px 0 50px;}
+    .hero h1{font-size:38px;}
+    .hero p.sub{font-size:17px;}
+    .stat-bar{gap:16px 0;}
+    .stat-item{padding:0 16px 12px 0;border-right:none;width:45%;}
+    .section{padding:70px 0;}
+    .section-head h2{font-size:30px;}
+    .products-grid{grid-template-columns:1fr;}
+    .testimonial-grid{grid-template-columns:1fr;overflow-x:auto;}
+    .footer-grid{grid-template-columns:1fr;gap:30px;}
+    .subpage-hero{padding:130px 0 60px;}
+    .subpage-hero h1{font-size:34px;}
+    .products-dropdown{position:static;transform:none;width:100%;box-shadow:none;opacity:1;pointer-events:auto;display:none;grid-template-columns:1fr 1fr;background:transparent;border:none;padding:6px 0;}
+    .products-dropdown.mobile-open{display:grid;}
+    .product-page-hero{padding:120px 0 60px;}
+    .product-hero-grid h1{font-size:32px;}
+    .feature-grid{grid-template-columns:1fr;}
+    .module-grid{grid-template-columns:1fr;}
+    .metrics-band-grid{grid-template-columns:1fr 1fr;}
+    .metric-big{font-size:38px;}
+    .product-cta-banner{padding:50px 24px;}
+    .product-cta-banner h2{font-size:26px;}
+    .blog-grid{grid-template-columns:1fr;}
+    .app-login-grid{grid-template-columns:1fr;}
+    .featured-post{padding:26px;}
+    .newsletter-card{padding:32px 24px;}
+    .demo-form-card{padding:26px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-brand" onclick="showPage('home');return false;" aria-label="PoultryOne home">
+      <svg viewBox="6 4 116 112" width="32" height="32" aria-hidden="true">
+        <circle cx="90" cy="94" r="8" fill="#163A75"/>
+        <circle cx="82" cy="101" r="5" fill="#163A75"/>
+        <ellipse cx="52" cy="72" rx="40" ry="37" fill="#F26A1B"/>
+        <polygon points="88,68 115,76 88,86" fill="#163A75"/>
+        <ellipse cx="46" cy="38" rx="22" ry="8" fill="#163A75"/>
+        <polygon points="28,40 36,18 44,40" fill="#163A75"/>
+        <polygon points="43,40 53,10 63,40" fill="#163A75"/>
+        <polygon points="60,40 68,20 76,40" fill="#163A75"/>
+        <circle cx="67" cy="62" r="7" fill="#163A75"/>
+      </svg>
+      PoultryOne
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#" class="nav-link" data-nav="home" onclick="showPage('home');return false;" aria-label="Home page">Home</a>
+      <div class="nav-item-dropdown">
+        <a href="#" class="nav-link" data-nav="products" onclick="return false;" aria-label="Products menu" aria-haspopup="true">Products <span class="dropdown-caret" aria-hidden="true">&#9662;</span></a>
+        <div class="products-dropdown" id="productsDropdown"></div>
+      </div>
+      <a href="#" class="nav-link" data-nav="about" onclick="showPage('about');return false;" aria-label="About us page">About</a>
+      <a href="#" class="nav-link" data-nav="blog" onclick="showPage('blog');return false;" aria-label="Blog and resources page">Blog</a>
+      <a href="#" class="nav-link" data-nav="contact" onclick="showPage('contact');return false;" aria-label="Contact page">Contact</a>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="#" class="btn btn-primary" onclick="showPage('contact');return false;" aria-label="Request a demo">Request Demo</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" data-nav="home" onclick="showPage('home');closeMobileMenu();return false;" aria-label="Home page">Home</a>
+    <div class="mobile-dropdown-group">
+      <a href="#" class="mobile-dropdown-toggle" id="mobileProductsToggle" aria-label="Toggle products menu">Products <span class="dropdown-caret" aria-hidden="true">&#9662;</span></a>
+      <div class="mobile-sublinks" id="mobileProductsSublinks"></div>
+    </div>
+    <a href="#" data-nav="about" onclick="showPage('about');closeMobileMenu();return false;" aria-label="About us page">About</a>
+    <a href="#" data-nav="blog" onclick="showPage('blog');closeMobileMenu();return false;" aria-label="Blog and resources page">Blog</a>
+    <a href="#" data-nav="contact" onclick="showPage('contact');closeMobileMenu();return false;" aria-label="Contact page">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ========== HOME PAGE ========== -->
+<section data-page="home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-mesh">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="container hero-grid">
+      <div>
+        <div class="badge-pill"><span class="pulse-dot"></span> The Poultry Industry's Operating System</div>
+        <h1>One Platform.<br><span class="grad">Six</span> Specialised<br>Applications.</h1>
+        <p class="sub">PoultryOne digitises every corner of the poultry value chain — from breeder farms and hatcheries to feed mills and live chicken suppliers. Real-time data. Zero paperwork. Total control.</p>
+        <div class="hero-ctas">
+          <a href="#products" class="btn btn-primary btn-lg">Explore Applications</a>
+          <a href="#" class="btn btn-outline btn-lg" onclick="showPage('contact');return false;">Request a Demo</a>
+        </div>
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-number" data-target="2500" data-suffix="+">0</span><span class="stat-label">Active Farms</span></div>
+          <div class="stat-item"><span class="stat-number" data-target="18" data-suffix="M+">0</span><span class="stat-label">Birds Tracked</span></div>
+          <div class="stat-item"><span class="stat-number" data-target="99.9" data-decimal="1" data-suffix="%">0</span><span class="stat-label">Uptime</span></div>
+          <div class="stat-item"><span class="stat-number" data-target="6" data-suffix="">0</span><span class="stat-label">Specialised Apps</span></div>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="mac-dots"><span></span><span></span><span></span></div>
+        <div class="dashboard-label">Live Farm Dashboard</div>
+
+        <div class="kpi-row">
+          <div class="kpi-bar" style="background:#F26A1B;"></div>
+          <div class="kpi-info"><div class="kpi-label">Active Batches</div><div class="kpi-value">142</div></div>
+          <div class="kpi-badge">+12%</div>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi-bar" style="background:#2E8FD0;"></div>
+          <div class="kpi-info"><div class="kpi-label">Live Birds</div><div class="kpi-value">2.4M</div></div>
+          <div class="kpi-badge">+8%</div>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi-bar" style="background:#28c840;"></div>
+          <div class="kpi-info"><div class="kpi-label">Avg EPEF</div><div class="kpi-value">378</div></div>
+          <div class="kpi-badge">+4%</div>
+        </div>
+
+        <div class="mini-chart">
+          <div class="mini-bar" style="height:55%;"></div>
+          <div class="mini-bar" style="height:75%;"></div>
+          <div class="mini-bar" style="height:45%;"></div>
+          <div class="mini-bar" style="height:90%;"></div>
+          <div class="mini-bar" style="height:65%;"></div>
+        </div>
+        <div class="chart-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
+
+        <div class="pill-row">
+          <span class="mini-pill">FCR 1.72 &#8595;</span>
+          <span class="mini-pill">Mortality 0.4% &#8595;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS GRID -->
+  <div class="section" id="products">
+    <div class="container">
+      <div class="section-head">
+        <h2>Everything Poultry, Perfectly Managed</h2>
+        <p>Six purpose-built applications covering every role in the poultry value chain.</p>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
+  <!-- VALUE PROP -->
+  <div class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-label">WHY POULTRYONE</div>
+        <h2>Built to run the whole business</h2>
+      </div>
+      <div class="value-grid">
+        <div class="value-col">
+          <div class="value-icon">&#128279;</div>
+          <h3>Fully Connected</h3>
+          <p>Every application shares the same flock, farm, and feed data. A batch placed in Broiler Management flows automatically to Feed Management, Costing, and Reports.</p>
+        </div>
+        <div class="value-col">
+          <div class="value-icon">&#128202;</div>
+          <h3>Data-Forward</h3>
+          <p>Real-time KPIs, trend charts, and alerts replace WhatsApp messages and paper registers. Owners see their business clearly — from any device, anywhere.</p>
+        </div>
+        <div class="value-col">
+          <div class="value-icon">&#128274;</div>
+          <h3>Multi-Tenant Secure</h3>
+          <p>Role-based access, complete audit trails, and tenant isolation ensure every farm's data is private, compliant, and traceable to the individual transaction.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <h2>Trusted across the poultry value chain</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="quote">We cut our feed variance from 18% to 3% in the first month. The FCR tracking alone paid for the software.</p>
+          <div class="testimonial-author"><b>Rajesh Kumar</b> — Farm Manager, Andhra Pradesh</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="quote">Our hatchery sets 80,000 eggs a week. PoultryOne gave us candling records, batch traceability, and zero manual paperwork.</p>
+          <div class="testimonial-author"><b>Suresh Reddy</b> — Hatchery Operations Manager</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="quote">The WhatsApp billing feature changed everything. My customers get their bill in 10 seconds. Collections improved immediately.</p>
+          <div class="testimonial-author"><b>Mohammed Farooq</b> — Live Chicken Supplier, Hyderabad</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="quote">Broiler EPEF used to be a mystery to our supervisors. Now it's on every farm's dashboard. They understand it. They chase it.</p>
+          <div class="testimonial-author"><b>Priya Nair</b> — Group Operations Head</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== PRODUCT SUB-PAGES ========== -->
+<section data-page="broiler" style="display:none;"></section>
+<section data-page="layer" style="display:none;"></section>
+<section data-page="breeder" style="display:none;"></section>
+<section data-page="hatchery" style="display:none;"></section>
+<section data-page="feedmill" style="display:none;"></section>
+<section data-page="supplier" style="display:none;"></section>
+
+<!-- ========== ABOUT ========== -->
+<section data-page="about" style="display:none;">
+
+  <div class="subpage-hero container">
+    <div class="section-label">OUR STORY</div>
+    <h1>Built by the Industry. For the Industry.</h1>
+    <p>PoultryOne was created to solve a problem every poultry farmer in India knows too well — critical business decisions made on WhatsApp messages, paper registers, and guesswork. We built the operating system the industry never had.</p>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <div class="container mission-vision-grid">
+      <div class="mission-card">
+        <h3>Our Mission</h3>
+        <p>To give every poultry farmer, hatchery manager, feed miller, and live chicken supplier the same real-time visibility and operational control that large corporations take for granted — at a price that makes sense for their business.</p>
+      </div>
+      <div class="vision-card">
+        <h3>Our Vision</h3>
+        <p>A fully connected, data-driven poultry value chain across South and Southeast Asia — where every placement, every egg, and every kilogram of feed is tracked, costed, and optimised automatically.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <h2>Six applications. One platform. One login.</h2>
+      </div>
+      <div class="value-grid">
+        <div class="value-col">
+          <div class="value-icon" aria-hidden="true">&#127919;</div>
+          <h3>Purpose-Built, Not Generic</h3>
+          <p>We didn't adapt an ERP. We built six applications from scratch, each designed around how a broiler farmer, a hatchery manager, or a chicken supplier actually works.</p>
+        </div>
+        <div class="value-col">
+          <div class="value-icon" aria-hidden="true">&#128290;</div>
+          <h3>Numbers, Not Text</h3>
+          <p>Poultry is a metrics business. Our screens show EPEF, FCR, Hen Day %, and hatchability — not just inventory counts. Because the numbers are the decisions.</p>
+        </div>
+        <div class="value-col">
+          <div class="value-icon" aria-hidden="true">&#127760;</div>
+          <h3>Multi-Tenant, Enterprise-Grade</h3>
+          <p>Complete data isolation per company, role-based access control, full audit trails, and 99.9% uptime — built for farms with 10 sheds or 10,000.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics-band" style="--accent:#F26A1B;--accent2:#FFC24D;">
+    <div class="container metrics-band-grid">
+      <div><div class="metric-big">2024</div><div class="metric-underline"></div><div class="metric-small-label">Founded</div></div>
+      <div><div class="metric-big">25+</div><div class="metric-underline"></div><div class="metric-small-label">Team Specialists</div></div>
+      <div><div class="metric-big">500+</div><div class="metric-underline"></div><div class="metric-small-label">Farms Live (Growing)</div></div>
+      <div><div class="metric-big">6</div><div class="metric-underline"></div><div class="metric-small-label">Purpose-Built Applications</div></div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <div class="container" style="text-align:center;">
+      <h2 style="font-size:32px;font-weight:800;margin-bottom:22px;">Want to see PoultryOne at your farm?</h2>
+      <a href="#" class="btn btn-primary btn-lg" onclick="showPage('contact');return false;" aria-label="Go to the contact page to schedule a demo">Schedule a Demo &rarr;</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== BLOG ========== -->
+<section data-page="blog" style="display:none;">
+
+  <div class="subpage-hero container">
+    <div class="section-label">BLOG &amp; RESOURCES</div>
+    <h1>Insights for the Modern Poultry Business</h1>
+    <p>Practical guides, performance benchmarks, and product updates for poultry farmers, hatchery managers, and feed millers.</p>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="featured-post">
+        <span class="tag-pill tag-guide">Guide</span>
+        <h2>What is EPEF and Why Every Broiler Farmer Should Chase It</h2>
+        <p>EPEF — the European Production Efficiency Factor — is the single number that combines mortality, growth rate, and feed conversion into one score. Here's how it's calculated, what a good score looks like, and how PoultryOne tracks it automatically.</p>
+        <div class="blog-meta">8 min read &middot; Broiler Management</div>
+        <a href="#" class="learn-more" style="color:var(--brand-orange);" aria-label="Read the EPEF article (coming soon)">Read Article &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head"><h2>Recent Posts</h2></div>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <span class="tag-pill tag-layer">Layer</span>
+          <h3>Hen Day % vs Hen Housed %: What's the Difference and Which One Matters More?</h3>
+          <p>Two metrics that sound similar but tell very different stories about your flock's true production efficiency.</p>
+          <div class="blog-meta">6 min read &middot; Layer Management</div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+        <div class="blog-card">
+          <span class="tag-pill tag-feedmill">Feed Mill</span>
+          <h3>How to Build a Broiler Finisher Formulation That Hits 2.8 kg at 42 Days</h3>
+          <p>A practical walkthrough of ingredient ratios, protein targets, and cost tradeoffs for a high-performing finisher feed.</p>
+          <div class="blog-meta">7 min read &middot; Feed Mill Management</div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+        <div class="blog-card">
+          <span class="tag-pill tag-hatchery">Hatchery</span>
+          <h3>Candling at Day 7: What Fertility % Tells You About Your Breeder Flock Quality</h3>
+          <p>Early candling data is one of the fastest ways to catch a breeder flock issue before it costs you a hatch.</p>
+          <div class="blog-meta">5 min read &middot; Hatchery Management</div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+        <div class="blog-card">
+          <span class="tag-pill tag-breeder">Breeder</span>
+          <h3>Male-Female Ratio Management in Breeder Farms: The 1:10 Rule and When to Break It</h3>
+          <p>The standard 1:10 ratio works for most flocks — here's when the exceptions actually pay off.</p>
+          <div class="blog-meta">6 min read &middot; Breeder Management</div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+        <div class="blog-card">
+          <span class="tag-pill tag-supplier">Suppliers</span>
+          <h3>Why Daily P&amp;L Beats Monthly Bookkeeping for Chicken Suppliers</h3>
+          <p>Waiting until month-end to know if you made money is a bet you don't need to keep making.</p>
+          <div class="blog-meta">4 min read &middot; Chicken Suppliers</div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+        <div class="blog-card">
+          <span class="tag-pill tag-broiler">Broiler</span>
+          <h3>Reading a Batch Cost Sheet: Where Your Money Actually Goes at 1.62 FCR</h3>
+          <p>Feed is only part of the story — here's how labour, medicine, and utilities shape your real cost per kilogram.</p>
+          <div class="blog-meta">6 min read &middot; Broiler Management</div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="newsletter-card">
+        <h3>Get poultry insights delivered to your inbox.</h3>
+        <form class="newsletter-form" onsubmit="return false;">
+          <label for="newsletterEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Email address</label>
+          <input type="email" id="newsletterEmail" name="newsletterEmail" placeholder="you@farm.com" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary" aria-label="Subscribe to the PoultryOne newsletter">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section data-page="contact" style="display:none;">
+
+  <div class="subpage-hero container">
+    <div class="section-label">CONTACT US</div>
+    <h1>Let's Get Your Farm on PoultryOne</h1>
+    <p>Fill in the form and our team will reach out within 24 hours to schedule a personalised demo for your operation.</p>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <div class="container contact-grid">
+
+      <div class="demo-form-card">
+        <h3>Request a Demo</h3>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label for="cf-name">Full Name</label>
+            <input type="text" id="cf-name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="cf-mobile">Mobile Number</label>
+            <input type="tel" id="cf-mobile" name="mobile" required />
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Email Address</label>
+            <input type="email" id="cf-email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="cf-company">Company / Farm Name</label>
+            <input type="text" id="cf-company" name="company" required />
+          </div>
+          <div class="form-group">
+            <label for="cf-application">Application of Interest</label>
+            <select id="cf-application" name="application">
+              <option>All Applications</option>
+              <option>Broiler Management</option>
+              <option>Layer Management</option>
+              <option>Breeder Management</option>
+              <option>Hatchery Management</option>
+              <option>Feed Mill Management</option>
+              <option>Chicken Suppliers</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cf-farms">Number of Farms / Sheds</label>
+            <select id="cf-farms" name="farms">
+              <option>1-5</option>
+              <option>6-20</option>
+              <option>21-50</option>
+              <option>50+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Message / Questions</label>
+            <textarea id="cf-message" name="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;" aria-label="Submit demo request">Submit Demo Request &rarr;</button>
+          <p class="form-disclaimer">We'll contact you within 24 hours. No spam, ever.</p>
+        </form>
+      </div>
+
+      <div class="contact-info-col">
+        <div class="info-card" style="border-left-color:#F26A1B;">
+          <div class="info-icon" aria-hidden="true">&#128231;</div>
+          <h4>Email Us</h4>
+          <p class="info-highlight">support@poultryone.in</p>
+          <p>For product questions, partnership enquiries, and support.</p>
+        </div>
+        <div class="info-card" style="border-left-color:#163A75;">
+          <div class="info-icon" aria-hidden="true">&#128222;</div>
+          <h4>Call Us</h4>
+          <p class="info-highlight">+91 63035 00851</p>
+          <p>Monday – Saturday, 9am to 6pm IST</p>
+        </div>
+
+        <div class="already-using">
+          <h4>Already using PoultryOne?</h4>
+          <div class="app-login-grid">
+            <a href="#" class="app-login-btn" style="background:#F26A1B;" aria-label="Broiler Management application login">Broiler Login</a>
+            <a href="#" class="app-login-btn" style="background:#F4A521;" aria-label="Layer Management application login">Layer Login</a>
+            <a href="#" class="app-login-btn" style="background:#163A75;" aria-label="Breeder Management application login">Breeder Login</a>
+            <a href="#" class="app-login-btn" style="background:#2E8FD0;" aria-label="Hatchery Management application login">Hatchery Login</a>
+            <a href="#" class="app-login-btn" style="background:#17786E;" aria-label="Feed Mill Management application login">Feed Mill Login</a>
+            <a href="#" class="app-login-btn" style="background:#45508F;" aria-label="Chicken Suppliers application login">Supplier Login</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== 404 ========== -->
+<section data-page="notfound" style="display:none;">
+  <div class="section" style="min-height:60vh;display:flex;align-items:center;">
+    <div class="container" style="display:flex;justify-content:center;">
+      <div class="notfound-card">
+        <svg viewBox="6 4 116 112" width="56" height="56" style="margin:0 auto 20px;" aria-hidden="true">
+          <circle cx="90" cy="94" r="8" fill="#163A75"/>
+          <circle cx="82" cy="101" r="5" fill="#163A75"/>
+          <ellipse cx="52" cy="72" rx="40" ry="37" fill="#F26A1B"/>
+          <polygon points="88,68 115,76 88,86" fill="#163A75"/>
+          <ellipse cx="46" cy="38" rx="22" ry="8" fill="#163A75"/>
+          <polygon points="28,40 36,18 44,40" fill="#163A75"/>
+          <polygon points="43,40 53,10 63,40" fill="#163A75"/>
+          <polygon points="60,40 68,20 76,40" fill="#163A75"/>
+          <circle cx="67" cy="62" r="7" fill="#163A75"/>
+        </svg>
+        <h2>Page not found</h2>
+        <p>The page you're looking for doesn't exist.</p>
+        <a href="#" class="btn btn-primary" onclick="showPage('home');return false;" aria-label="Go to the PoultryOne homepage">Go Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="6 4 116 112" width="28" height="28" aria-hidden="true">
+            <circle cx="90" cy="94" r="8" fill="#163A75"/>
+            <circle cx="82" cy="101" r="5" fill="#163A75"/>
+            <ellipse cx="52" cy="72" rx="40" ry="37" fill="#F26A1B"/>
+            <polygon points="88,68 115,76 88,86" fill="#163A75"/>
+            <ellipse cx="46" cy="38" rx="22" ry="8" fill="#163A75"/>
+            <polygon points="28,40 36,18 44,40" fill="#163A75"/>
+            <polygon points="43,40 53,10 63,40" fill="#163A75"/>
+            <polygon points="60,40 68,20 76,40" fill="#163A75"/>
+            <circle cx="67" cy="62" r="7" fill="#163A75"/>
+          </svg>
+          PoultryOne
+        </div>
+        <p class="footer-tagline">The Poultry Industry's Operating System.</p>
+        <div class="social-row">
+          <a href="#" class="social-circle" aria-label="PoultryOne on LinkedIn" role="button">in</a>
+          <a href="#" class="social-circle" aria-label="PoultryOne on X (Twitter)" role="button">&#120143;</a>
+          <a href="#" class="social-circle" aria-label="PoultryOne on YouTube" role="button">&#9654;</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#" onclick="showPage('broiler');return false;" aria-label="Broiler Management product page">Broiler Management</a>
+        <a href="#" onclick="showPage('layer');return false;" aria-label="Layer Management product page">Layer Management</a>
+        <a href="#" onclick="showPage('breeder');return false;" aria-label="Breeder Management product page">Breeder Management</a>
+        <a href="#" onclick="showPage('hatchery');return false;" aria-label="Hatchery Management product page">Hatchery Management</a>
+        <a href="#" onclick="showPage('feedmill');return false;" aria-label="Feed Mill Management product page">Feed Mill Management</a>
+        <a href="#" onclick="showPage('supplier');return false;" aria-label="Chicken Suppliers product page">Chicken Suppliers</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#" onclick="showPage('about');return false;" aria-label="About us page">About Us</a>
+        <a href="#" onclick="showPage('blog');return false;" aria-label="Blog and resources page">Blog &amp; Resources</a>
+        <a href="#" onclick="showPage('contact');return false;" aria-label="Contact page">Contact Us</a>
+        <a href="#" onclick="showPage('contact');return false;" aria-label="Request a demo">Request a Demo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>hello@poultryone.com</p>
+        <p>+91 98765 43210</p>
+        <p>Hyderabad, India</p>
+        <a href="#" class="btn btn-primary" style="margin-top:6px;" onclick="showPage('contact');return false;" aria-label="Request a demo">Request Demo</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 PoultryOne. All rights reserved.</span>
+      <span><a href="#" aria-label="Privacy Policy">Privacy Policy</a> &middot; <a href="#" aria-label="Terms of Service">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var PRODUCTS = [
+    {id:"broiler",name:"Broiler Management",desc:"From day-old chick placement to harvest — complete batch lifecycle management.",metrics:["42-day cycles","EPEF tracked","Real-time FCR"],grad:["#F26A1B","#FF8A3D"],color:"#F26A1B"},
+    {id:"layer",name:"Layer Management",desc:"Pullet phase through peak production — egg output, quality, and flock health in one view.",metrics:["Hen Day %","72-week cycles","Grade-by-weight"],grad:["#F4A521","#FFC24D"],color:"#F4A521"},
+    {id:"breeder",name:"Breeder Management",desc:"Male-female ratio management, hatching egg production, and hatchery transfers — all connected.",metrics:["Hen Housed %","Egg grading","Flock transfers"],grad:["#163A75","#2E5EA0"],color:"#5B85C4"},
+    {id:"hatchery",name:"Hatchery Management",desc:"Egg intake to chick dispatch — incubation, candling, hatch records, and yield analytics.",metrics:["Hatchability %","Candling records","Chick dispatch"],grad:["#2E8FD0","#57B0E6"],color:"#57B0E6"},
+    {id:"feedmill",name:"Feed Mill Management",desc:"Formulations, raw material control, batch costing, and real-time finished feed stock.",metrics:["100+ formulations","Batch QC","Mill-to-farm"],grad:["#17786E","#2AA093"],color:"#2AA093"},
+    {id:"supplier",name:"Chicken Suppliers",desc:"Purchase from farms, deliver to stores, send WhatsApp bills — daily profit without paperwork.",metrics:["WhatsApp billing","Credit ledger","Daily P&L"],grad:["#45508F","#6470B5"],color:"#6470B5"}
+  ];
+
+  var PAGE_TITLES = {
+    home:"PoultryOne — The Poultry Industry's Operating System",
+    broiler:"Broiler Management | PoultryOne",
+    layer:"Layer Management | PoultryOne",
+    breeder:"Breeder Management | PoultryOne",
+    hatchery:"Hatchery Management | PoultryOne",
+    feedmill:"Feed Mill Management | PoultryOne",
+    supplier:"Chicken Suppliers | PoultryOne",
+    about:"About Us | PoultryOne",
+    blog:"Blog & Resources | PoultryOne",
+    contact:"Contact Us | PoultryOne",
+    notfound:"Page Not Found | PoultryOne"
+  };
+
+  function birdSvg(){
+    return '<svg viewBox="6 4 116 112" width="40" height="40">'+
+      '<circle cx="90" cy="94" r="8" fill="rgba(255,255,255,0.9)"/>'+
+      '<circle cx="82" cy="101" r="5" fill="rgba(255,255,255,0.9)"/>'+
+      '<ellipse cx="52" cy="72" rx="40" ry="37" fill="white"/>'+
+      '<polygon points="88,68 115,76 88,86" fill="rgba(255,255,255,0.9)"/>'+
+      '<ellipse cx="46" cy="38" rx="22" ry="8" fill="rgba(255,255,255,0.9)"/>'+
+      '<polygon points="28,40 36,18 44,40" fill="rgba(255,255,255,0.9)"/>'+
+      '<polygon points="43,40 53,10 63,40" fill="rgba(255,255,255,0.9)"/>'+
+      '<polygon points="60,40 68,20 76,40" fill="rgba(255,255,255,0.9)"/>'+
+      '<circle cx="67" cy="62" r="7" fill="rgba(255,255,255,0.9)"/>'+
+      '</svg>';
+  }
+  function birdSvgSmall(){
+    return '<svg viewBox="6 4 116 112" width="18" height="18">'+
+      '<circle cx="90" cy="94" r="8" fill="white"/>'+
+      '<circle cx="82" cy="101" r="5" fill="white"/>'+
+      '<ellipse cx="52" cy="72" rx="40" ry="37" fill="white"/>'+
+      '<polygon points="88,68 115,76 88,86" fill="white"/>'+
+      '<ellipse cx="46" cy="38" rx="22" ry="8" fill="white"/>'+
+      '<polygon points="28,40 36,18 44,40" fill="white"/>'+
+      '<polygon points="43,40 53,10 63,40" fill="white"/>'+
+      '<polygon points="60,40 68,20 76,40" fill="white"/>'+
+      '<circle cx="67" cy="62" r="7" fill="white"/>'+
+      '</svg>';
+  }
+
+  function buildProductsGrid(){
+    var grid = document.getElementById("productsGrid");
+    grid.innerHTML = PRODUCTS.map(function(p){
+      return '<div class="product-card">'+
+        '<div class="product-icon" style="background:linear-gradient(135deg,'+p.grad[0]+','+p.grad[1]+');">'+birdSvg()+'</div>'+
+        '<h3>'+p.name+'</h3>'+
+        '<p class="desc">'+p.desc+'</p>'+
+        '<div class="product-metrics">'+p.metrics.map(function(m){return '<span class="metric-chip">'+m+'</span>';}).join('')+'</div>'+
+        '<a href="#" class="learn-more" style="color:'+p.color+';" onclick="showPage(\''+p.id+'\');return false;">Learn More &rarr;</a>'+
+      '</div>';
+    }).join('');
+  }
+
+  function buildDropdown(){
+    var html = PRODUCTS.map(function(p){
+      return '<a href="#" class="dropdown-tile" onclick="showPage(\''+p.id+'\');return false;">'+
+        '<span class="dropdown-icon" style="background:linear-gradient(135deg,'+p.grad[0]+','+p.grad[1]+');">'+birdSvgSmall()+'</span>'+
+        '<span>'+p.name+'</span></a>';
+    }).join('');
+    document.getElementById("productsDropdown").innerHTML = html;
+    document.getElementById("mobileProductsSublinks").innerHTML = PRODUCTS.map(function(p){
+      return '<a href="#" onclick="showPage(\''+p.id+'\');closeMobileMenu();return false;">'+p.name+'</a>';
+    }).join('');
+  }
+
+  function buildMarquee(){
+    var items = [
+      ["2,500+","Farms"],["18M+","Birds"],["1.2B+","Eggs Tracked"],["99.9%","Uptime"],
+      ["6","Applications"],["15,000+","Daily Transactions"],["Rs. 500Cr+","Farm Revenue Tracked"],
+      ["42","Countries"],["Zero","Paperwork"]
+    ];
+    function block(){
+      return items.map(function(i){
+        return '<span class="marquee-item"><b>'+i[0]+'</b> <span class="label">'+i[1]+'</span></span><span class="marquee-item marquee-dot">&middot;</span>';
+      }).join('');
+    }
+    document.getElementById("marqueeTrack").innerHTML = block()+block();
+  }
+
+  function hexToRgba(hex, alpha){
+    var h = hex.replace('#','');
+    var r = parseInt(h.substring(0,2),16), g = parseInt(h.substring(2,4),16), b = parseInt(h.substring(4,6),16);
+    return 'rgba('+r+','+g+','+b+','+alpha+')';
+  }
+
+  var PRODUCT_PAGES = {
+    broiler:{
+      id:"broiler", name:"Broiler Management", pillName:"Broiler Management",
+      accent:["#F26A1B","#FF8A3D"],
+      headline:"From Day-Old Chick to Harvest — Total Batch Control",
+      sub:"PoultryOne Broiler tracks every gram of feed, every bird lost, and every kilogram harvested across your entire broiler operation — in real time.",
+      stats:["42-Day Cycles — EPEF \u2265 380","FCR as low as 1.62","< 3% Mortality Tracked","100% Paperless"],
+      mockup:{header:"Batch NBF-S1-BL-20250601-001", rows:[
+        "EPEF \u00b7 379.2 \u00b7 \u2191 4.2%",
+        "FCR \u00b7 1.72 \u00b7 \u2193 Good",
+        "Live Birds \u00b7 9,720 / 10,000",
+        "Harvest in \u00b7 7 days",
+        "Growth vs Target \u00b7 94%"
+      ]},
+      features:[
+        {icon:"\ud83e\udd5a", title:"Batch Placement", desc:"Record every chick batch with breed, supplier, cost, and target metrics in one form."},
+        {icon:"\ud83d\udcc9", title:"Mortality & Culling", desc:"Daily entries with reason codes trigger automatic alerts when mortality exceeds breed thresholds."},
+        {icon:"\u2696\ufe0f", title:"Body Weight Tracking", desc:"Actual vs target weight curves with underperformance alerts at 10% deviation."},
+        {icon:"\ud83c\udf3d", title:"Feed Consumption", desc:"Daily feed tracking auto-calculates FCR and flags variance against expected intake per bird."},
+        {icon:"\ud83d\ude9b", title:"Harvest & Trip Sheets", desc:"Catch management with trip distance, liveweight, slaughter yield, and driver dispatch."},
+        {icon:"\ud83d\udcb0", title:"Batch Profitability", desc:"Real-time cost per kg breakdown: bird cost, feed, medicine, labour, utilities, and ROI."}
+      ],
+      workflow:[
+        {name:"Placement", desc:"Chicks placed with breed, supplier, and cost recorded."},
+        {name:"Daily Operations", desc:"Feed, mortality, and health entries logged every day."},
+        {name:"Body Weight Monitoring", desc:"Actual vs target weight tracked across the cycle."},
+        {name:"Harvest Planning", desc:"Target weight and date determine catch scheduling."},
+        {name:"Catch & Dispatch", desc:"Live weight capture and trip sheet generation."},
+        {name:"Slaughter Yield", desc:"Dressed weight and yield % recorded post-processing."},
+        {name:"Batch Close & Costing", desc:"Final cost per kg and batch profitability computed."}
+      ],
+      metrics:[
+        {value:"2,500+", label:"Active Batches Managed"},
+        {value:"18M+", label:"Broiler Birds Tracked"},
+        {value:"379", label:"Average EPEF Score"},
+        {value:"Rs. 120Cr+", label:"Feed Cost Tracked"}
+      ],
+      modules:[
+        {name:"Batch Placement", desc:"Record chick placement with breed, supplier, and cost details."},
+        {name:"Mortality & Culling", desc:"Daily mortality entries with reason codes and threshold alerts."},
+        {name:"Body Weight Management", desc:"Track actual vs target weight curves across the cycle."},
+        {name:"Feed Consumption", desc:"Daily feed intake with automatic FCR calculation."},
+        {name:"Medicine & Vaccine", desc:"Schedule and log vaccination and treatment programs per batch."},
+        {name:"Environmental Monitoring", desc:"Track shed temperature, humidity, and ventilation logs."},
+        {name:"Harvest & Catch", desc:"Plan and record catch operations with live weight capture."},
+        {name:"Trip Sheets & Logistics", desc:"Dispatch tracking with distance, driver, and vehicle details."},
+        {name:"Batch Costing & Profitability", desc:"Real-time cost per kg and ROI breakdown per batch."}
+      ],
+      ctaType:"broiler operation",
+      ctaSub:"Join operators already running paperless batches on PoultryOne Broiler."
+    },
+    layer:{
+      id:"layer", name:"Layer Management", pillName:"Layer Management",
+      accent:["#F4A521","#FFC24D"],
+      headline:"72-Week Layer Cycles. Every Egg Counted.",
+      sub:"From pullet housing to peak lay and end-of-cycle — PoultryOne Layer tracks Hen Day production, egg grading, and commercial egg inventory with zero manual registers.",
+      stats:["Hen Day % Real-Time","72-Week Full Cycle","Weight-Based Grading: XL/L/M/S","Pullet + Production Phase"],
+      mockup:{header:"Layer Flock LY-2025-003 \u00b7 Week 48", rows:[
+        "Hen Day % \u00b7 91.4% \u00b7 \u2191 Good",
+        "Hen Housed % \u00b7 87.2%",
+        "Eggs Today \u00b7 44,200",
+        "Grade A (Large) \u00b7 68%",
+        "Stock Available \u00b7 1,24,000 eggs"
+      ]},
+      features:[
+        {icon:"\ud83d\udc23", title:"Pullet Phase Management", desc:"Uniformity %, weight vs standard, and feed intake tracking during the rearing phase before lay begins."},
+        {icon:"\ud83e\udd5a", title:"Daily Egg Collection", desc:"One entry per flock per day: total eggs, broken, rejected, with auto Hen Day % and Hen Housed % calculation."},
+        {icon:"\u2696\ufe0f", title:"Commercial Egg Grading", desc:"Weight-based grades (XL, L, M, S, Reject) with configurable gram thresholds per breed."},
+        {icon:"\ud83d\udce6", title:"Egg Inventory", desc:"Commercial egg stock by grade, per farm — depleted automatically when sales invoices are confirmed."},
+        {icon:"\ud83d\udcc8", title:"Production Trends", desc:"7-day rolling average, Hen Day % trend chart, and low-production alerts when output drops >5% below average."},
+        {icon:"\ud83d\udcb0", title:"Layer Profitability", desc:"Cost per egg breakdown: feed (typically 65% of cost), bird amortisation, medicine, labour, and egg revenue."}
+      ],
+      workflow:[
+        {name:"Pullet Placement", desc:"Pullets housed with breed and target standards set."},
+        {name:"Pullet Phase Monitoring", desc:"Uniformity % and weight tracked before lay begins."},
+        {name:"Phase Transition to Production", desc:"Flock moves from rearing into egg production."},
+        {name:"Daily Egg Collection", desc:"Total, broken, and rejected eggs logged per flock."},
+        {name:"Commercial Grading", desc:"Eggs graded by weight into XL, L, M, S."},
+        {name:"Egg Sales", desc:"Graded stock sold and inventory depleted automatically."},
+        {name:"Flock Close", desc:"Cycle-end performance and profitability finalised."}
+      ],
+      metrics:[
+        {value:"1.2B+", label:"Eggs Tracked"},
+        {value:"91%", label:"Average Hen Day %"},
+        {value:"8,500+", label:"Layer Flocks Managed"},
+        {value:"72-Week", label:"Cycle Coverage"}
+      ],
+      modules:[
+        {name:"Pullet Placement", desc:"Record pullet housing with breed, quantity, and target standards."},
+        {name:"Daily Egg Collection", desc:"Log daily totals, breakages, and rejects per flock."},
+        {name:"Body Weight & Uniformity", desc:"Track flock uniformity % against breed standards."},
+        {name:"Feed Consumption", desc:"Daily feed intake tracked against production stage."},
+        {name:"Commercial Egg Grading", desc:"Weight-based grading into XL, L, M, S, and reject."},
+        {name:"Egg Inventory", desc:"Live stock by grade, depleted automatically on sale."},
+        {name:"Layer Profitability", desc:"Cost per egg breakdown across feed, birds, and labour."},
+        {name:"Layer Reports", desc:"Trend charts and performance reports across flocks."}
+      ],
+      ctaType:"layer flock",
+      ctaSub:"Track every egg from pullet to end-of-cycle with PoultryOne Layer."
+    },
+    breeder:{
+      id:"breeder", name:"Breeder Management", pillName:"Breeder Management",
+      accent:["#163A75","#2E5EA0"],
+      headline:"Breeding the Next Generation. Managed Down to the Egg.",
+      sub:"PoultryOne Breeder connects your flock's hatching egg output directly to the hatchery — tracking male-female ratios, egg quality grades, and cold-room inventory with full traceability.",
+      stats:["Male : Female Ratio Tracked","Hen Housed % Live","Hatching Egg Grade A/B/C","Cold Room \u2192 Hatchery Transfer"],
+      mockup:{header:"Breeder Flock BR-2025-007 \u00b7 Week 32", rows:[
+        "Hen Day % \u00b7 84.6% \u00b7 \u2191",
+        "Settable Eggs Today \u00b7 8,340",
+        "Grade A \u00b7 76% \u00b7 Grade B \u00b7 19%",
+        "Cold Room Stock \u00b7 42,600 eggs",
+        "M:F Ratio \u00b7 1:10 \u00b7 \u2713 Optimal"
+      ]},
+      features:[
+        {icon:"\ud83d\udc13", title:"Male-Female Placement", desc:"Track male and female quantities separately from day one; ratio alerts when male count drifts from optimal."},
+        {icon:"\ud83e\udd5a", title:"Hatching Egg Production", desc:"Daily entry of total, broken, rejected, and reserved hatching eggs with Hen Day % and Hen Housed % auto-computed."},
+        {icon:"\ud83d\udd0d", title:"Egg Grading", desc:"Grade A, B, C, Reject, Cracked, and Dirty counts with quality trend charts and farm comparison reports."},
+        {icon:"\u2744\ufe0f", title:"Cold Room Management", desc:"Egg transfers from farm to cold room with real-time cold room inventory and temperature-logged movement history."},
+        {icon:"\ud83c\udfed", title:"Hatchery Transfer", desc:"Send eggs from cold room to hatchery; each transfer auto-creates an intake record in the Hatchery module."},
+        {icon:"\ud83d\udd04", title:"Bird Transfer", desc:"Move birds between breeder farms or sheds; source and destination inventories update automatically with full audit trail."}
+      ],
+      workflow:[
+        {name:"Placement (Male + Female)", desc:"Male and female birds housed and tracked separately."},
+        {name:"Rearing", desc:"Birds raised toward optimal male-female ratio targets."},
+        {name:"Production Phase", desc:"Flock reaches lay and hatching egg output begins."},
+        {name:"Daily Egg Collection", desc:"Hatching eggs collected and Hen Day % computed."},
+        {name:"Egg Grading", desc:"Eggs sorted into Grade A, B, C, and reject categories."},
+        {name:"Cold Room Storage", desc:"Graded eggs stored with temperature-logged movement."},
+        {name:"Hatchery Transfer", desc:"Eggs sent to hatchery, auto-creating an intake record."}
+      ],
+      metrics:[
+        {value:"850+", label:"Breeder Flocks Active"},
+        {value:"340M+", label:"Hatching Eggs Tracked"},
+        {value:"84%", label:"Average Hen Housed %"},
+        {value:"42", label:"Cold Rooms Managed"}
+      ],
+      modules:[
+        {name:"Breeder Placement", desc:"Track male and female birds separately from day one."},
+        {name:"Egg Production (Hatching)", desc:"Daily hatching egg entries with Hen Day % auto-computed."},
+        {name:"Egg Grading", desc:"Grade A, B, C, cracked, and dirty egg classification."},
+        {name:"Cold Room Management", desc:"Real-time cold room inventory with movement history."},
+        {name:"Egg Transfer", desc:"Send graded eggs from cold room directly to hatchery intake."},
+        {name:"Bird Transfer", desc:"Move birds between farms with full audit trail."},
+        {name:"Medicine & Vaccine", desc:"Schedule and log vaccination programs per flock."},
+        {name:"Breeder Profitability", desc:"Cost and revenue tracking across hatching egg output."},
+        {name:"Breeder Reports", desc:"Performance trends across flocks and farms."}
+      ],
+      ctaType:"breeder farm",
+      ctaSub:"Connect flock output straight to the hatchery with full traceability."
+    },
+    hatchery:{
+      id:"hatchery", name:"Hatchery Management", pillName:"Hatchery Management",
+      accent:["#2E8FD0","#57B0E6"],
+      headline:"Every Egg Set. Every Chick Counted.",
+      sub:"PoultryOne Hatchery takes hatching eggs from intake through incubation, candling, hatching, and chick dispatch — with full traceability back to the source breeder flock and forward to the farm placement.",
+      stats:["Hatchability \u2265 82%","Fertility Tracked at Candling","Setter \u2192 Hatcher Workflow","Auto Farm Placement on Dispatch"],
+      mockup:{header:"Hatchery Operations \u2014 Week 28", rows:[
+        "Eggs in Incubation \u00b7 1,84,000",
+        "Available to Set \u00b7 24,600",
+        "Avg Fertility % \u00b7 93.4%",
+        "Avg Hatchability % \u00b7 81.8%",
+        "Chicks Dispatched (Week) \u00b7 1,49,200"
+      ]},
+      features:[
+        {icon:"\ud83d\udce5", title:"Egg Intake", desc:"Receive eggs transferred from breeder farms, record batch-level receipt, and flag any rejected-on-arrival eggs before setting."},
+        {icon:"\ud83c\udf21\ufe0f", title:"Incubator Setting", desc:"Set eggs into specific incubators with planned transfer-to-hatcher dates auto-calculated (Day 18 for chickens, configurable)."},
+        {icon:"\ud83d\udd26", title:"Candling Records", desc:"Fertility check at Day 7\u201310: record fertile, infertile, cracked, and dead-germ counts; low-fertility alerts trigger at configurable thresholds."},
+        {icon:"\ud83d\udc23", title:"Hatch Records", desc:"Record chicks hatched, culled chicks, and unhatched eggs; auto-compute Hatchability % and Hatch-of-Fertile %."},
+        {icon:"\ud83d\udce4", title:"Chick Grading & Dispatch", desc:"Grade first and second-quality chicks, dispatch to farms with cost per chick; dispatch automatically creates a Placement record on the destination farm."},
+        {icon:"\ud83d\udcca", title:"Source Quality Analytics", desc:"Trace hatchability and fertility back to individual breeder flocks and suppliers for procurement decisions."}
+      ],
+      workflow:[
+        {name:"Egg Intake from Breeder", desc:"Eggs received and checked for arrival damage."},
+        {name:"Incubator Setting", desc:"Eggs set with auto-calculated transfer dates."},
+        {name:"Candling (Day 7\u201310)", desc:"Fertility check flags fertile, infertile, and cracked eggs."},
+        {name:"Transfer to Hatcher (Day 18)", desc:"Eggs moved from setter to hatcher trays."},
+        {name:"Hatch Record", desc:"Chicks hatched and unhatched eggs recorded."},
+        {name:"Chick Grading", desc:"Chicks sorted into first and second-quality grades."},
+        {name:"Dispatch", desc:"Chicks sent to farms with cost per chick recorded."},
+        {name:"Auto Farm Placement", desc:"Dispatch automatically creates a placement record."}
+      ],
+      metrics:[
+        {value:"120", label:"Incubators Managed"},
+        {value:"82%", label:"Average Hatchability"},
+        {value:"93%", label:"Average Fertility"},
+        {value:"1,49,000", label:"Chicks/Week Tracked"}
+      ],
+      modules:[
+        {name:"Egg Intake", desc:"Receive eggs from breeder farms with batch-level records."},
+        {name:"Incubator Setting", desc:"Set eggs with auto-calculated transfer-to-hatcher dates."},
+        {name:"Candling Records", desc:"Fertility checks with fertile, infertile, and cracked counts."},
+        {name:"Hatch Records", desc:"Auto-computed Hatchability % and Hatch-of-Fertile %."},
+        {name:"Chick Grading", desc:"Grade first and second-quality chicks by batch."},
+        {name:"Chick Dispatch", desc:"Dispatch to farms with cost per chick and auto placement."},
+        {name:"Source Quality Reports", desc:"Trace hatchability back to breeder flocks and suppliers."}
+      ],
+      ctaType:"hatchery",
+      ctaSub:"Trace every chick back to source and forward to placement, automatically."
+    },
+    feedmill:{
+      id:"feedmill", name:"Feed Mill Management", pillName:"Feed Mill Management",
+      accent:["#17786E","#2AA093"],
+      headline:"From Raw Ingredient to Farm Gate — Every Kilogram Costed.",
+      sub:"PoultryOne Feed Mill manages raw material stock, feed formulations with live nutritional profiles, batch manufacturing, QC approvals, and finished feed dispatch — all traceable to the farm that uses it.",
+      stats:["100+ Feed Formulations","Real-Time Batch Cost/kg","QC Approval Workflow","Mill \u2192 Farm Auto-Stock"],
+      mockup:{header:"Feed Mill \u2014 Today's Production", rows:[
+        "Active Batches \u00b7 4 in Production",
+        "Maize Stock \u00b7 48.2 MT \u00b7 \u2713 OK",
+        "Soybean Meal \u00b7 12.8 MT \u00b7 \u26a0 Low",
+        "Batch FM-20250601-003 \u00b7 QC Pending",
+        "Cost/kg today \u00b7 \u20b922.40"
+      ]},
+      features:[
+        {icon:"\ud83c\udf3d", title:"Raw Material Management", desc:"Purchase, stock, and quality-track every ingredient with lot-level traceability; low-stock alerts at configurable reorder levels."},
+        {icon:"\ud83d\udccb", title:"Feed Formulations", desc:"Build nutritional recipes with ingredient inclusion rates; system auto-validates 100% total and shows live protein, energy, and moisture profile."},
+        {icon:"\ud83c\udfed", title:"Batch Manufacturing", desc:"Create production batches from formulations; record actual quantities used vs planned, with full ingredient lot traceability."},
+        {icon:"\ud83d\udd2c", title:"Quality Control", desc:"QC test results (moisture, protein, energy, aflatoxin) gate finished feed dispatch; failed batches cannot be sent to farms until approved."},
+        {icon:"\ud83d\udce6", title:"Finished Feed Stock", desc:"Completed and QC-passed batches automatically create Feed Purchase records at destination farms — tracing finished feed to its mill batch."},
+        {icon:"\ud83d\udcb0", title:"Batch Costing", desc:"Real-time cost per kg: ingredient costs + labour + overhead; track cost trends by formulation over time."}
+      ],
+      workflow:[
+        {name:"Raw Material Purchase", desc:"Ingredients purchased and lot-tracked on arrival."},
+        {name:"Stock Management", desc:"Inventory monitored with reorder-level alerts."},
+        {name:"Formulation Selection", desc:"Recipe chosen based on nutritional targets."},
+        {name:"Batch Production Order", desc:"Production batch created from the formulation."},
+        {name:"Manufacturing", desc:"Batch manufactured with actual usage recorded."},
+        {name:"Quality Control", desc:"Moisture, protein, and aflatoxin tests performed."},
+        {name:"QC Pass", desc:"Batch approved and cleared for dispatch."},
+        {name:"Farm Dispatch", desc:"Finished feed sent to the destination farm."},
+        {name:"Auto Feed Stock Credit", desc:"Farm feed stock updated automatically on delivery."}
+      ],
+      metrics:[
+        {value:"120+", label:"Feed Formulations Managed"},
+        {value:"850 MT", label:"Tracked per Month"},
+        {value:"\u20b922.40", label:"Avg Cost per Kg"},
+        {value:"99.2%", label:"QC Pass Rate"}
+      ],
+      modules:[
+        {name:"Raw Material Management", desc:"Purchase, stock, and lot-track every ingredient."},
+        {name:"Feed Formulations", desc:"Build recipes with live protein and energy profiles."},
+        {name:"Batch Production", desc:"Create production orders from approved formulations."},
+        {name:"Quality Control", desc:"QC test gates on moisture, protein, and aflatoxin levels."},
+        {name:"Finished Feed Dispatch", desc:"Auto-credit farm feed stock on batch dispatch."},
+        {name:"Feed Mill Costing", desc:"Real-time cost per kg across ingredients and overhead."},
+        {name:"Raw Material Reports", desc:"Stock movement and reorder analytics."},
+        {name:"Production Reports", desc:"Batch yield and formulation performance trends."}
+      ],
+      ctaType:"feed mill",
+      ctaSub:"Cost every kilogram from raw ingredient to farm gate, automatically."
+    },
+    supplier:{
+      id:"supplier", name:"Chicken Suppliers", pillName:"Chicken Suppliers",
+      accent:["#45508F","#6470B5"],
+      headline:"Buy from Farms. Sell to Stores. Profit — Daily, Without Paperwork.",
+      sub:"PoultryOne for Chicken Suppliers digitises the live chicken supply chain: farm purchases, shop deliveries, WhatsApp bills, cash and credit ledgers, and daily P&L — all on your phone.",
+      stats:["WhatsApp Bill in 10 Seconds","Daily Profit Visible Live","Credit Ledger Both Sides","Zero Paper. Zero Confusion."],
+      mockup:{header:"Today's Summary \u00b7 June 1, 2025", rows:[
+        "Purchased \u00b7 2,400 kg \u00b7 \u20b92,16,000",
+        "Delivered \u00b7 2,380 kg \u00b7 \u20b92,38,000",
+        "Today's Profit \u00b7 \u20b922,000 \u00b7 \u2191",
+        "Outstanding (Shops) \u00b7 \u20b91,84,500",
+        "Bills Sent via WhatsApp \u00b7 14"
+      ]},
+      features:[
+        {icon:"\ud83c\udfea", title:"Farm Purchase Entry", desc:"Record every bird purchase from farms: weight, rate, total amount, and payment mode (cash/credit); farm balance updates instantly."},
+        {icon:"\ud83d\udef5", title:"Shop Delivery Tracking", desc:"Log every delivery to retail chicken stores: customer, weight, rate, and amount; auto-generates the delivery bill."},
+        {icon:"\ud83d\udcf1", title:"WhatsApp Billing", desc:"One tap sends a digital bill to the customer's WhatsApp — formatted, branded, and timestamped — no printing, no WhatsApp typing."},
+        {icon:"\ud83d\udcd2", title:"Dual Credit Ledger", desc:"Separate outstanding balances for farm suppliers (you owe them) and retail customers (they owe you) — live, always accurate."},
+        {icon:"\ud83d\udcb0", title:"Daily P&L Dashboard", desc:"Purchase cost vs sales revenue vs expenses: your net daily profit is visible before you close for the day."},
+        {icon:"\ud83d\udcca", title:"Stock Position", desc:"Know exactly how many kilograms you have on hand between purchase and delivery, valued at cost — no surprise shortfalls."}
+      ],
+      workflow:[
+        {name:"Purchase from Farm", desc:"Weight and rate recorded at time of purchase."},
+        {name:"Record Payment Mode", desc:"Cash or credit logged against the farm balance."},
+        {name:"Stock Updates", desc:"On-hand kilograms updated in real time."},
+        {name:"Deliver to Shops", desc:"Weight and rate logged for each shop delivery."},
+        {name:"Send WhatsApp Bill", desc:"Digital bill sent to the customer instantly."},
+        {name:"Collect Payment", desc:"Payment recorded against the shop's ledger."},
+        {name:"Update Ledger", desc:"Farm and shop balances updated automatically."},
+        {name:"View Daily Profit", desc:"Net profit visible before closing for the day."}
+      ],
+      metrics:[
+        {value:"1,200+", label:"Active Suppliers"},
+        {value:"\u20b9800Cr+", label:"Transactions Tracked"},
+        {value:"14", label:"Bills/Day Per Supplier"},
+        {value:"< 10 Sec", label:"to WhatsApp Bill"}
+      ],
+      modules:[
+        {name:"Farm Purchase Management", desc:"Record purchases with weight, rate, and payment mode."},
+        {name:"Shop Delivery Tracking", desc:"Log deliveries and auto-generate delivery bills."},
+        {name:"WhatsApp Digital Billing", desc:"Send branded, timestamped bills in one tap."},
+        {name:"Dual Credit Ledger", desc:"Live balances for both farm suppliers and shop customers."},
+        {name:"Daily P&L Dashboard", desc:"See net profit before you close for the day."},
+        {name:"Stock Position", desc:"Know kilograms on hand, valued at cost, in real time."}
+      ],
+      ctaType:"chicken supply business",
+      ctaSub:"Bill in seconds, track both ledgers, and see your profit — every single day."
+    }
+  };
+
+  function buildProductPage(p){
+    var section = document.querySelector('section[data-page="'+p.id+'"]');
+    section.style.setProperty('--accent', p.accent[0]);
+    section.style.setProperty('--accent2', p.accent[1]);
+
+    var statsHtml = p.stats.map(function(s){ return '<span class="stat-pill">'+s+'</span>'; }).join('');
+
+    var mockupRows = p.mockup.rows.map(function(r){
+      var parts = r.split(' \u00b7 ');
+      var label = parts[0];
+      var value = parts.slice(1).join(' \u00b7 ');
+      return '<div class="product-kpi-row"><div class="product-kpi-bar"></div><div class="kpi-info"><div class="product-kpi-label">'+label+'</div><div class="product-kpi-value">'+value+'</div></div></div>';
+    }).join('');
+
+    var featuresHtml = p.features.map(function(f){
+      return '<div class="feature-tile"><div class="feature-icon" style="background:'+hexToRgba(p.accent[0],0.15)+';">'+f.icon+'</div><h3>'+f.title+'</h3><p>'+f.desc+'</p></div>';
+    }).join('');
+
+    var workflowHtml = p.workflow.map(function(stage, i){
+      var arrow = (i < p.workflow.length - 1) ? '<span class="workflow-arrow">&rarr;</span>' : '';
+      return '<div class="workflow-stage"><div class="workflow-num">'+(i+1)+'</div><h4>'+stage.name+'</h4><p>'+stage.desc+'</p></div>'+arrow;
+    }).join('');
+
+    var metricsHtml = p.metrics.map(function(m){
+      return '<div><div class="metric-big">'+m.value+'</div><div class="metric-underline"></div><div class="metric-small-label">'+m.label+'</div></div>';
+    }).join('');
+
+    var modulesHtml = p.modules.map(function(m){
+      return '<div class="module-card"><h4>'+m.name+'</h4><p>'+m.desc+'</p></div>';
+    }).join('');
+
+    section.innerHTML =
+      '<div class="product-page-hero"><div class="product-hero-glow"></div><div class="container product-hero-grid">'+
+        '<div>'+
+          '<div class="product-pill">'+p.pillName+'</div>'+
+          '<h1>'+p.headline+'</h1>'+
+          '<p class="sub">'+p.sub+'</p>'+
+          '<div class="stat-pill-row">'+statsHtml+'</div>'+
+          '<div class="product-cta-row">'+
+            '<a href="#" class="btn btn-lg btn-accent">Login to App</a>'+
+            '<a href="#" class="btn btn-lg btn-outline" onclick="showPage(\'contact\');return false;">Request Demo</a>'+
+          '</div>'+
+        '</div>'+
+        '<div class="dashboard-card">'+
+          '<div class="mac-dots"><span></span><span></span><span></span></div>'+
+          '<div class="product-mockup-header">'+p.mockup.header+'</div>'+
+          mockupRows+
+        '</div>'+
+      '</div></div>'+
+
+      '<div class="section"><div class="container">'+
+        '<div class="section-head"><h2>Everything '+p.name+' needs</h2></div>'+
+        '<div class="feature-grid">'+featuresHtml+'</div>'+
+      '</div></div>'+
+
+      '<div class="section" style="padding-top:0;"><div class="container">'+
+        '<div class="section-head"><h2>How it works</h2></div>'+
+        '<div class="workflow-track">'+workflowHtml+'</div>'+
+      '</div></div>'+
+
+      '<div class="metrics-band"><div class="container metrics-band-grid">'+metricsHtml+'</div></div>'+
+
+      '<div class="section"><div class="container">'+
+        '<div class="section-head"><h2>Modules included</h2></div>'+
+        '<div class="module-grid">'+modulesHtml+'</div>'+
+      '</div></div>'+
+
+      '<div class="section" style="padding-top:0;"><div class="container">'+
+        '<div class="product-cta-banner">'+
+          '<h2>Ready to digitise your '+p.ctaType+'?</h2>'+
+          '<p>'+p.ctaSub+'</p>'+
+          '<div class="product-cta-row">'+
+            '<a href="#" class="btn btn-lg btn-white">Login to App</a>'+
+            '<a href="#" class="btn btn-lg btn-outline-white" onclick="showPage(\'contact\');return false;">Request Demo</a>'+
+          '</div>'+
+        '</div>'+
+      '</div></div>';
+  }
+
+  // ---------- Page navigation ----------
+  window.showPage = function(pageId){
+    var pages = document.querySelectorAll('[data-page]');
+    var validIds = [];
+    pages.forEach(function(p){ validIds.push(p.getAttribute('data-page')); });
+    if(validIds.indexOf(pageId) === -1){ pageId = 'notfound'; }
+
+    pages.forEach(function(p){
+      var isTarget = p.getAttribute('data-page') === pageId;
+      p.style.display = isTarget ? '' : 'none';
+      if(isTarget){
+        p.classList.remove('fade-in');
+        void p.offsetWidth;
+        p.classList.add('fade-in');
+      }
+    });
+    document.title = PAGE_TITLES[pageId] || 'PoultryOne';
+    window.scrollTo({top:0,behavior:'instant' in window ? 'instant' : 'auto'});
+
+    document.querySelectorAll('.nav-link[data-nav], .mobile-menu a[data-nav]').forEach(function(l){
+      l.classList.remove('active');
+      if(l.getAttribute('data-nav') === pageId) l.classList.add('active');
+    });
+    if (['broiler','layer','breeder','hatchery','feedmill','supplier'].indexOf(pageId) !== -1){
+      var dropdownLink = document.querySelector('.nav-link[data-nav="products"]');
+      if(dropdownLink) dropdownLink.classList.add('active');
+    }
+    closeMobileMenu();
+  };
+
+  window.closeMobileMenu = function(){
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('mobileProductsSublinks').classList.remove('open');
+  };
+
+  // ---------- Navbar scroll state ----------
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 50){ navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    document.getElementById('scroll-progress').style.width = pct + '%';
+  });
+
+  // ---------- Hamburger ----------
+  document.getElementById('hamburgerBtn').addEventListener('click', function(){
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+  document.getElementById('mobileProductsToggle').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('mobileProductsSublinks').classList.toggle('open');
+  });
+
+  // ---------- Products dropdown (click toggle for touch devices) ----------
+  var dropdownParent = document.querySelector('.nav-item-dropdown');
+  var dropdownTrigger = dropdownParent.querySelector('.nav-link');
+  dropdownTrigger.addEventListener('click', function(e){
+    e.preventDefault();
+    dropdownParent.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e){
+    if(!dropdownParent.contains(e.target)) dropdownParent.classList.remove('open');
+  });
+
+  // ---------- Counter animation ----------
+  function animateCounter(el){
+    var target = parseFloat(el.getAttribute('data-target'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var value = target * eased;
+      el.textContent = value.toFixed(decimals) + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toFixed(decimals) + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  var counterObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.4});
+
+  // ---------- Init ----------
+  buildProductsGrid();
+  buildDropdown();
+  buildMarquee();
+  Object.keys(PRODUCT_PAGES).forEach(function(id){ buildProductPage(PRODUCT_PAGES[id]); });
+  document.querySelectorAll('.stat-number').forEach(function(el){ counterObserver.observe(el); });
+  showPage('home');
+})();
+</script>
+</body>
+</html>
