@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "https://supplier.poultryone.in/admin",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "https://supplier.poultryone.in/admin/:path*",
+      "permanent": false
+    }
+  ]
+}
