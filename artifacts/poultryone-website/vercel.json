@@ -10,5 +10,11 @@
       "destination": "https://supplier.poultryone.in/admin/:path*",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!admin).*)",
+      "destination": "/index.html"
+    }
   ]
 }
