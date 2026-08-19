@@ -948,8 +948,6 @@
 
 <!-- ========== 404 ========== -->
 <section data-page="notfound" style="display:none;">
-<!-- ========== 404 ========== -->
-<section data-page="notfound" style="display:none;">
   <div class="section" style="min-height:60vh;display:flex;align-items:center;">
     <div class="container" style="display:flex;justify-content:center;">
       <div class="notfound-card">
@@ -1516,7 +1514,10 @@
     var validIds = [];
     pages.forEach(function(p){ validIds.push(p.getAttribute('data-page')); });
     if(validIds.indexOf(pageId) === -1){ pageId = 'notfound'; }
-
+      var newPath = pageId === 'home' ? '/' : '/' + pageId;
+  if(window.location.pathname !== newPath){
+    window.history.pushState({page: pageId}, '', newPath);
+  }
     pages.forEach(function(p){
       var isTarget = p.getAttribute('data-page') === pageId;
       p.style.display = isTarget ? '' : 'none';
@@ -1574,6 +1575,12 @@
     if(!dropdownParent.contains(e.target)) dropdownParent.classList.remove('open');
   });
 
+  // ---------- Browser back/forward button support ----------
+  window.addEventListener('popstate', function(){
+    var path = window.location.pathname.replace(/^\/|\/$/g, '');
+    showPage(path || 'home');
+  });
+  
   // ---------- Counter animation ----------
   function animateCounter(el){
     var target = parseFloat(el.getAttribute('data-target'));
@@ -1607,7 +1614,8 @@
   buildMarquee();
   Object.keys(PRODUCT_PAGES).forEach(function(id){ buildProductPage(PRODUCT_PAGES[id]); });
   document.querySelectorAll('.stat-number').forEach(function(el){ counterObserver.observe(el); });
-  showPage('home');
+  var initialPath = window.location.pathname.replace(/^\/|\/$/g, '');
+  showPage(initialPath || 'home');
 })();
 </script>
 </body>
