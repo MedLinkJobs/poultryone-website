@@ -657,6 +657,7 @@
 <section data-page="hatchery" style="display:none;"></section>
 <section data-page="feedmill" style="display:none;"></section>
 <section data-page="supplier" style="display:none;"></section>
+<section data-page="retail" style="display:none;"></section>
 
 <!-- ========== ABOUT ========== -->
 <section data-page="about" style="display:none;">
@@ -1032,6 +1033,7 @@
         <a href="#" onclick="showPage('hatchery');return false;" aria-label="Hatchery Management product page">Hatchery Management</a>
         <a href="#" onclick="showPage('feedmill');return false;" aria-label="Feed Mill Management product page">Feed Mill Management</a>
         <a href="#" onclick="showPage('supplier');return false;" aria-label="Chicken Suppliers product page">Chicken Suppliers</a>
+        <a href="#" onclick="showPage('retail');return false;" aria-label="PoultryOne Retail product page">PoultryOne Retail</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -1065,7 +1067,8 @@
     {id:"breeder",name:"Breeder Management",desc:"Male-female ratio management, hatching egg production, and hatchery transfers — all connected.",metrics:["Hen Housed %","Egg grading","Flock transfers"],grad:["#163A75","#2E5EA0"],color:"#5B85C4"},
     {id:"hatchery",name:"Hatchery Management",desc:"Egg intake to chick dispatch — incubation, candling, hatch records, and yield analytics.",metrics:["Hatchability %","Candling records","Chick dispatch"],grad:["#2E8FD0","#57B0E6"],color:"#57B0E6"},
     {id:"feedmill",name:"Feed Mill Management",desc:"Formulations, raw material control, batch costing, and real-time finished feed stock.",metrics:["100+ formulations","Batch QC","Mill-to-farm"],grad:["#17786E","#2AA093"],color:"#2AA093"},
-    {id:"supplier",name:"Chicken Suppliers",desc:"Purchase from farms, deliver to stores, send WhatsApp bills — daily profit without paperwork.",metrics:["WhatsApp billing","Credit ledger","Daily P&L"],grad:["#45508F","#6470B5"],color:"#6470B5"}
+    {id:"supplier",name:"Chicken Suppliers",desc:"Purchase from farms, deliver to stores, send WhatsApp bills — daily profit without paperwork.",metrics:["WhatsApp billing","Credit ledger","Daily P&L"],grad:["#45508F","#6470B5"],color:"#6470B5"},
+    {id:"retail",name:"PoultryOne Retail",desc:"Daily business ledger for chicken and poultry retail shops — revenue, expenses, and stock, tracked in seconds.",metrics:["Daily ledger","Multi-branch","Instant reports"],grad:["#F26A1B","#FFC24D"],color:"#F26A1B"}
   ];
 
   var PAGE_TITLES = {
@@ -1076,6 +1079,7 @@
     hatchery:"Hatchery Management | PoultryOne",
     feedmill:"Feed Mill Management | PoultryOne",
     supplier:"Chicken Suppliers | PoultryOne",
+    retail:"PoultryOne Retail | PoultryOne",
     about:"About Us | PoultryOne",
     blog:"Blog & Resources | PoultryOne",
     contact:"Contact Us | PoultryOne",
@@ -1453,6 +1457,49 @@
       ],
       ctaType:"chicken supply business",
       ctaSub:"Bill in seconds, track both ledgers, and see your profit — every single day."
+    },
+    retail:{
+      id:"retail", name:"PoultryOne Retail", pillName:"PoultryOne Retail", loginUrl:"#",
+      accent:["#F26A1B","#FFC24D"],
+      headline:"Your Shop's Daily Business, Tracked in Seconds.",
+      sub:"PoultryOne Retail is a mobile app built for chicken and poultry retail shop owners — record daily revenue, expenses, and stock across multiple branches, right from your phone.",
+      stats:["Daily Ledger Entry","Multi-Branch Support","Export to CSV, PDF & Excel","Available Soon on Play Store"],
+      mockup:{header:"Today's Summary \u00b7 Branch: Honey Shop", rows:[
+        "Revenue Today \u00b7 \u20b970,000",
+        "Gross Profit \u00b7 \u20b970,000 \u00b7 100%",
+        "Stock Sold \u00b7 0.0 kg",
+        "Days Closed (Month) \u00b7 1",
+        "Branches Active \u00b7 3"
+      ]},
+      features:[
+        {icon:"\ud83d\udcd2", title:"Daily Ledger Entry", desc:"Record daily revenue, expenses, and stock in seconds — no spreadsheets, no paper registers."},
+        {icon:"\ud83c\udfea", title:"Multi-Branch Management", desc:"Track multiple shops or branches from a single account, with per-branch performance visible at a glance."},
+        {icon:"\ud83d\udcca", title:"Reports & Analytics", desc:"See revenue trends, profit margins, and stock movement with clear, easy-to-read reports and business insights."},
+        {icon:"\ud83d\udcc4", title:"Export & Share", desc:"Export reports as CSV, PDF, or Excel, and share them instantly via WhatsApp or any other app."},
+        {icon:"\ud83d\udd10", title:"Secure by Design", desc:"Encrypted authentication and secure cloud storage keep your business data private and protected."},
+        {icon:"\ud83d\udcf1", title:"Built for Mobile", desc:"A native Android app designed for how retail shop owners actually work — fast, simple, and on the go."}
+      ],
+      workflow:[
+        {name:"Set Up Branches", desc:"Add one or more shop branches to your account."},
+        {name:"Daily Entry", desc:"Log revenue, expenses, and stock at day's end."},
+        {name:"Auto-Calculated Insights", desc:"Profit margins and trends computed instantly."},
+        {name:"View Reports", desc:"Check monthly performance across all branches."},
+        {name:"Export & Share", desc:"Download or share reports via WhatsApp in seconds."}
+      ],
+      metrics:[
+        {value:"3+", label:"Branches Supported per Account"},
+        {value:"100%", label:"Paperless Daily Ledger"},
+        {value:"3", label:"Export Formats"},
+        {value:"Soon", label:"Live on Play Store"}
+      ],
+      modules:[
+        {name:"Daily Ledger", desc:"Record daily revenue, expenses, and stock entries."},
+        {name:"Branch Management", desc:"Add, edit, and manage multiple shop branches."},
+        {name:"Reports & Analytics", desc:"Monthly performance trends and business insights."},
+        {name:"Export Tools", desc:"CSV, PDF, and Excel export with native sharing."}
+      ],
+      ctaType:"retail shop",
+      ctaSub:"PoultryOne Retail is currently in testing and launching soon on Google Play."
     }
   };
 
@@ -1495,7 +1542,7 @@
           '<p class="sub">'+p.sub+'</p>'+
           '<div class="stat-pill-row">'+statsHtml+'</div>'+
           '<div class="product-cta-row">'+
-            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-accent">Login to App</a>'+
+            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-accent">'+(p.id === 'retail' ? 'Available Soon on Play Store' : 'Login to App')+'</a>'+
             '<a href="#" class="btn btn-lg btn-outline" onclick="showPage(\'contact\');return false;">Request Demo</a>'+
           '</div>'+
         '</div>'+
@@ -1528,7 +1575,7 @@
           '<h2>Ready to digitise your '+p.ctaType+'?</h2>'+
           '<p>'+p.ctaSub+'</p>'+
           '<div class="product-cta-row">'+
-            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-white">Login to App</a>'+
+            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-white">'+(p.id === 'retail' ? 'Available Soon on Play Store' : 'Login to App')+'</a>'+
             '<a href="#" class="btn btn-lg btn-outline-white" onclick="showPage(\'contact\');return false;">Request Demo</a>'+
           '</div>'+
         '</div>'+
