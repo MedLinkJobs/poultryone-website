@@ -1459,11 +1459,11 @@
       ctaSub:"Bill in seconds, track both ledgers, and see your profit — every single day."
     },
     retail:{
-      id:"retail", name:"PoultryOne Retail", pillName:"PoultryOne Retail", loginUrl:"#",
+     id:"retail", name:"PoultryOne Retail", pillName:"PoultryOne Retail", loginUrl:"https://play.google.com/store/apps/details?id=com.poultryone.suppliers",
       accent:["#F26A1B","#FFC24D"],
       headline:"Your Shop's Daily Business, Tracked in Seconds.",
       sub:"PoultryOne Retail is a mobile app built for chicken and poultry retail shop owners — record daily revenue, expenses, and stock across multiple branches, right from your phone.",
-      stats:["Daily Ledger Entry","Multi-Branch Support","Export to CSV, PDF & Excel","Available Soon on Play Store"],
+      stats:["Daily Ledger Entry","Multi-Branch Support","Export to CSV, PDF & Excel","Now Live on Play Store"],
       mockup:{header:"Today's Summary \u00b7 Branch: Honey Shop", rows:[
         "Revenue Today \u00b7 \u20b970,000",
         "Gross Profit \u00b7 \u20b970,000 \u00b7 100%",
@@ -1490,7 +1490,7 @@
         {value:"3+", label:"Branches Supported per Account"},
         {value:"100%", label:"Paperless Daily Ledger"},
         {value:"3", label:"Export Formats"},
-        {value:"Soon", label:"Live on Play Store"}
+        {value:"Live", label:"Now on Play Store"}
       ],
       modules:[
         {name:"Daily Ledger", desc:"Record daily revenue, expenses, and stock entries."},
@@ -1499,7 +1499,7 @@
         {name:"Export Tools", desc:"CSV, PDF, and Excel export with native sharing."}
       ],
       ctaType:"retail shop",
-      ctaSub:"PoultryOne Retail is currently in testing and launching soon on Google Play."
+      ctaSub:"PoultryOne Retail is now live on Google Play. Download it today."
     }
   };
 
@@ -1542,7 +1542,7 @@
           '<p class="sub">'+p.sub+'</p>'+
           '<div class="stat-pill-row">'+statsHtml+'</div>'+
           '<div class="product-cta-row">'+
-            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-accent">'+(p.id === 'retail' ? 'Available Soon on Play Store' : 'Login to App')+'</a>'+
+            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-accent">'+(p.id === 'retail' ? 'Get it on Google Play' : 'Login to App')+'</a>'+
             '<a href="#" class="btn btn-lg btn-outline" onclick="showPage(\'contact\');return false;">Request Demo</a>'+
           '</div>'+
         '</div>'+
@@ -1575,7 +1575,7 @@
           '<h2>Ready to digitise your '+p.ctaType+'?</h2>'+
           '<p>'+p.ctaSub+'</p>'+
           '<div class="product-cta-row">'+
-            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-white">'+(p.id === 'retail' ? 'Available Soon on Play Store' : 'Login to App')+'</a>'+
+            '<a href="'+p.loginUrl+'" class="btn btn-lg btn-white">'+(p.id === 'retail' ? 'Get it on Google Play' : 'Login to App')+'</a>'+
             '<a href="#" class="btn btn-lg btn-outline-white" onclick="showPage(\'contact\');return false;">Request Demo</a>'+
           '</div>'+
         '</div>'+
