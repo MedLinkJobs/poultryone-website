@@ -534,9 +534,9 @@
           <a href="#" class="btn btn-outline btn-lg" onclick="showPage('contact');return false;">Request a Demo</a>
         </div>
         <div class="stat-bar">
-          <div class="stat-item"><span class="stat-number" data-target="2500" data-suffix="+">0</span><span class="stat-label">Active Farms</span></div>
-          <div class="stat-item"><span class="stat-number" data-target="18" data-suffix="M+">0</span><span class="stat-label">Birds Tracked</span></div>
-          <div class="stat-item"><span class="stat-number" data-target="99.9" data-decimal="1" data-suffix="%">0</span><span class="stat-label">Uptime</span></div>
+          <div class="stat-item"><span class="stat-number" data-target="45" data-suffix="+">0</span><span class="stat-label">Active Farms</span></div>
+          <div class="stat-item"><span class="stat-number" data-target="320" data-prefix="~" data-suffix="K">0</span><span class="stat-label">Birds Tracked</span></div>
+          <div class="stat-item"><span class="stat-number" data-target="99.7" data-decimal="1" data-suffix="%+">0</span><span class="stat-label">Uptime</span></div>
           <div class="stat-item"><span class="stat-number" data-target="6" data-suffix="">0</span><span class="stat-label">Specialised Apps</span></div>
         </div>
       </div>
@@ -547,17 +547,17 @@
 
         <div class="kpi-row">
           <div class="kpi-bar" style="background:#F26A1B;"></div>
-          <div class="kpi-info"><div class="kpi-label">Active Batches</div><div class="kpi-value">142</div></div>
+          <div class="kpi-info"><div class="kpi-label">Active Batches</div><div class="kpi-value">68</div></div>
           <div class="kpi-badge">+12%</div>
         </div>
         <div class="kpi-row">
           <div class="kpi-bar" style="background:#2E8FD0;"></div>
-          <div class="kpi-info"><div class="kpi-label">Live Birds</div><div class="kpi-value">2.4M</div></div>
+          <div class="kpi-info"><div class="kpi-label">Live Birds</div><div class="kpi-value">210K</div></div>
           <div class="kpi-badge">+8%</div>
         </div>
         <div class="kpi-row">
           <div class="kpi-bar" style="background:#28c840;"></div>
-          <div class="kpi-info"><div class="kpi-label">Avg EPEF</div><div class="kpi-value">378</div></div>
+          <div class="kpi-info"><div class="kpi-label">Avg EPEF</div><div class="kpi-value">374</div></div>
           <div class="kpi-badge">+4%</div>
         </div>
 
@@ -700,7 +700,7 @@
         <div class="value-col">
           <div class="value-icon" aria-hidden="true">&#127760;</div>
           <h3>Multi-Tenant, Enterprise-Grade</h3>
-          <p>Complete data isolation per company, role-based access control, full audit trails, and 99.9% uptime — built for farms with 10 sheds or 10,000.</p>
+         <p>Complete data isolation per company, role-based access control, full audit trails, and 99.7%+ uptime — built for farms with 10 sheds or 500.</p>
         </div>
       </div>
     </div>
@@ -709,8 +709,8 @@
   <div class="metrics-band" style="--accent:#F26A1B;--accent2:#FFC24D;">
     <div class="container metrics-band-grid">
       <div><div class="metric-big">2024</div><div class="metric-underline"></div><div class="metric-small-label">Founded</div></div>
-      <div><div class="metric-big">25+</div><div class="metric-underline"></div><div class="metric-small-label">Team Specialists</div></div>
-      <div><div class="metric-big">500+</div><div class="metric-underline"></div><div class="metric-small-label">Farms Live (Growing)</div></div>
+      <div><div class="metric-big">8+</div><div class="metric-underline"></div><div class="metric-small-label">Team Specialists</div></div>
+      <div><div class="metric-big">45+</div><div class="metric-underline"></div><div class="metric-small-label">Farms Live (Growing)</div></div>
       <div><div class="metric-big">6</div><div class="metric-underline"></div><div class="metric-small-label">Purpose-Built Applications</div></div>
     </div>
   </div>
@@ -1066,7 +1066,7 @@
     {id:"layer",name:"Layer Management",desc:"Pullet phase through peak production — egg output, quality, and flock health in one view.",metrics:["Hen Day %","72-week cycles","Grade-by-weight"],grad:["#F4A521","#FFC24D"],color:"#F4A521"},
     {id:"breeder",name:"Breeder Management",desc:"Male-female ratio management, hatching egg production, and hatchery transfers — all connected.",metrics:["Hen Housed %","Egg grading","Flock transfers"],grad:["#163A75","#2E5EA0"],color:"#5B85C4"},
     {id:"hatchery",name:"Hatchery Management",desc:"Egg intake to chick dispatch — incubation, candling, hatch records, and yield analytics.",metrics:["Hatchability %","Candling records","Chick dispatch"],grad:["#2E8FD0","#57B0E6"],color:"#57B0E6"},
-    {id:"feedmill",name:"Feed Mill Management",desc:"Formulations, raw material control, batch costing, and real-time finished feed stock.",metrics:["100+ formulations","Batch QC","Mill-to-farm"],grad:["#17786E","#2AA093"],color:"#2AA093"},
+    {id:"feedmill",name:"Feed Mill Management",desc:"Formulations, raw material control, batch costing, and real-time finished feed stock.",metrics:["30+ formulations","Batch QC","Mill-to-farm"],grad:["#17786E","#2AA093"],color:"#2AA093"},
     {id:"supplier",name:"Chicken Suppliers",desc:"Purchase from farms, deliver to stores, send WhatsApp bills — daily profit without paperwork.",metrics:["WhatsApp billing","Credit ledger","Daily P&L"],grad:["#45508F","#6470B5"],color:"#6470B5"},
     {id:"retail",name:"PoultryOne Retail",desc:"Daily business ledger for chicken and poultry retail shops — revenue, expenses, and stock, tracked in seconds.",metrics:["Daily ledger","Multi-branch","Instant reports"],grad:["#F26A1B","#FFC24D"],color:"#F26A1B"}
   ];
@@ -1141,11 +1141,11 @@
   }
 
   function buildMarquee(){
-    var items = [
-      ["2,500+","Farms"],["18M+","Birds"],["1.2B+","Eggs Tracked"],["99.9%","Uptime"],
-      ["6","Applications"],["15,000+","Daily Transactions"],["Rs. 500Cr+","Farm Revenue Tracked"],
-      ["42","Countries"],["Zero","Paperwork"]
-    ];
+   var items = [
+  ["45+","Farms"],["~320K","Birds"],["~150K","Eggs Set / Week"],["99.7%+","Uptime"],
+  ["6","Applications"],["850+","Daily Transactions"],["Rs. 8Cr+","Farm Revenue Tracked"],
+  ["3","States Served"],["Zero","Paperwork"]
+];
     function block(){
       return items.map(function(i){
         return '<span class="marquee-item"><b>'+i[0]+'</b> <span class="label">'+i[1]+'</span></span><span class="marquee-item marquee-dot">&middot;</span>';
@@ -1169,7 +1169,7 @@
       mockup:{header:"Batch NBF-S1-BL-20250601-001", rows:[
         "EPEF \u00b7 379.2 \u00b7 \u2191 4.2%",
         "FCR \u00b7 1.72 \u00b7 \u2193 Good",
-        "Live Birds \u00b7 9,720 / 10,000",
+        "Live Birds \u00b7 6,420 / 7,000",
         "Harvest in \u00b7 7 days",
         "Growth vs Target \u00b7 94%"
       ]},
@@ -1190,12 +1190,12 @@
         {name:"Slaughter Yield", desc:"Dressed weight and yield % recorded post-processing."},
         {name:"Batch Close & Costing", desc:"Final cost per kg and batch profitability computed."}
       ],
-      metrics:[
-        {value:"2,500+", label:"Active Batches Managed"},
-        {value:"18M+", label:"Broiler Birds Tracked"},
-        {value:"379", label:"Average EPEF Score"},
-        {value:"Rs. 120Cr+", label:"Feed Cost Tracked"}
-      ],
+        metrics:[
+  {value:"90+", label:"Active Batches"},
+  {value:"~280K", label:"Birds Tracked"},
+  {value:"379", label:"Average EPEF Score"},
+  {value:"Rs. 8Cr+", label:"Feed Cost Tracked"}
+],
       modules:[
         {name:"Batch Placement", desc:"Record chick placement with breed, supplier, and cost details."},
         {name:"Mortality & Culling", desc:"Daily mortality entries with reason codes and threshold alerts."},
@@ -1219,9 +1219,9 @@
       mockup:{header:"Layer Flock LY-2025-003 \u00b7 Week 48", rows:[
         "Hen Day % \u00b7 91.4% \u00b7 \u2191 Good",
         "Hen Housed % \u00b7 87.2%",
-        "Eggs Today \u00b7 44,200",
+        "Eggs Today \u00b7 8,400",
         "Grade A (Large) \u00b7 68%",
-        "Stock Available \u00b7 1,24,000 eggs"
+        "Stock Available \u00b7 28,000 eggs"
       ]},
       features:[
         {icon:"\ud83d\udc23", title:"Pullet Phase Management", desc:"Uniformity %, weight vs standard, and feed intake tracking during the rearing phase before lay begins."},
@@ -1240,12 +1240,12 @@
         {name:"Egg Sales", desc:"Graded stock sold and inventory depleted automatically."},
         {name:"Flock Close", desc:"Cycle-end performance and profitability finalised."}
       ],
-      metrics:[
-        {value:"1.2B+", label:"Eggs Tracked"},
-        {value:"91%", label:"Average Hen Day %"},
-        {value:"8,500+", label:"Layer Flocks Managed"},
-        {value:"72-Week", label:"Cycle Coverage"}
-      ],
+    metrics:[
+  {value:"35+", label:"Active Flocks"},
+  {value:"~140K", label:"Birds Tracked"},
+  {value:"91%", label:"Average Hen Day %"},
+  {value:"72-Week", label:"Cycle Coverage"}
+],
       modules:[
         {name:"Pullet Placement", desc:"Record pullet housing with breed, quantity, and target standards."},
         {name:"Daily Egg Collection", desc:"Log daily totals, breakages, and rejects per flock."},
@@ -1267,9 +1267,9 @@
       stats:["Male : Female Ratio Tracked","Hen Housed % Live","Hatching Egg Grade A/B/C","Cold Room \u2192 Hatchery Transfer"],
       mockup:{header:"Breeder Flock BR-2025-007 \u00b7 Week 32", rows:[
         "Hen Day % \u00b7 84.6% \u00b7 \u2191",
-        "Settable Eggs Today \u00b7 8,340",
+        "Settable Eggs Today \u00b7 2,850",
         "Grade A \u00b7 76% \u00b7 Grade B \u00b7 19%",
-        "Cold Room Stock \u00b7 42,600 eggs",
+        "Cold Room Stock \u00b7 11,000 eggs",
         "M:F Ratio \u00b7 1:10 \u00b7 \u2713 Optimal"
       ]},
       features:[
@@ -1289,12 +1289,12 @@
         {name:"Cold Room Storage", desc:"Graded eggs stored with temperature-logged movement."},
         {name:"Hatchery Transfer", desc:"Eggs sent to hatchery, auto-creating an intake record."}
       ],
-      metrics:[
-        {value:"850+", label:"Breeder Flocks Active"},
-        {value:"340M+", label:"Hatching Eggs Tracked"},
-        {value:"84%", label:"Average Hen Housed %"},
-        {value:"42", label:"Cold Rooms Managed"}
-      ],
+     metrics:[
+  {value:"18+", label:"Active Flocks"},
+  {value:"~55K", label:"Birds Tracked"},
+  {value:"84%", label:"Average Hen Housed %"},
+  {value:"3", label:"Cold Rooms Managed"}
+],
       modules:[
         {name:"Breeder Placement", desc:"Track male and female birds separately from day one."},
         {name:"Egg Production (Hatching)", desc:"Daily hatching egg entries with Hen Day % auto-computed."},
@@ -1316,11 +1316,11 @@
       sub:"PoultryOne Hatchery takes hatching eggs from intake through incubation, candling, hatching, and chick dispatch — with full traceability back to the source breeder flock and forward to the farm placement.",
       stats:["Hatchability \u2265 82%","Fertility Tracked at Candling","Setter \u2192 Hatcher Workflow","Auto Farm Placement on Dispatch"],
       mockup:{header:"Hatchery Operations \u2014 Week 28", rows:[
-        "Eggs in Incubation \u00b7 1,84,000",
-        "Available to Set \u00b7 24,600",
+        "Eggs in Incubation \u00b7 34,800",
+        "Available to Set \u00b7 4,600",
         "Avg Fertility % \u00b7 93.4%",
         "Avg Hatchability % \u00b7 81.8%",
-        "Chicks Dispatched (Week) \u00b7 1,49,200"
+        "Chicks Dispatched (Week) \u00b7 28,800"
       ]},
       features:[
         {icon:"\ud83d\udce5", title:"Egg Intake", desc:"Receive eggs transferred from breeder farms, record batch-level receipt, and flag any rejected-on-arrival eggs before setting."},
@@ -1340,12 +1340,12 @@
         {name:"Dispatch", desc:"Chicks sent to farms with cost per chick recorded."},
         {name:"Auto Farm Placement", desc:"Dispatch automatically creates a placement record."}
       ],
-      metrics:[
-        {value:"120", label:"Incubators Managed"},
-        {value:"82%", label:"Average Hatchability"},
-        {value:"93%", label:"Average Fertility"},
-        {value:"1,49,000", label:"Chicks/Week Tracked"}
-      ],
+     metrics:[
+  {value:"8+", label:"Hatcheries Live"},
+  {value:"82%", label:"Average Hatchability"},
+  {value:"93%", label:"Average Fertility"},
+  {value:"~150K", label:"Eggs Set / Week"}
+],
       modules:[
         {name:"Egg Intake", desc:"Receive eggs from breeder farms with batch-level records."},
         {name:"Incubator Setting", desc:"Set eggs with auto-calculated transfer-to-hatcher dates."},
@@ -1363,11 +1363,11 @@
       accent:["#17786E","#2AA093"],
       headline:"From Raw Ingredient to Farm Gate — Every Kilogram Costed.",
       sub:"PoultryOne Feed Mill manages raw material stock, feed formulations with live nutritional profiles, batch manufacturing, QC approvals, and finished feed dispatch — all traceable to the farm that uses it.",
-      stats:["100+ Feed Formulations","Real-Time Batch Cost/kg","QC Approval Workflow","Mill \u2192 Farm Auto-Stock"],
+      stats:["30+ Feed Formulations","Real-Time Batch Cost/kg","QC Approval Workflow","Mill \u2192 Farm Auto-Stock"],
       mockup:{header:"Feed Mill \u2014 Today's Production", rows:[
         "Active Batches \u00b7 4 in Production",
-        "Maize Stock \u00b7 48.2 MT \u00b7 \u2713 OK",
-        "Soybean Meal \u00b7 12.8 MT \u00b7 \u26a0 Low",
+        "Maize Stock \u00b7 18.4 MT \u00b7 \u2713 OK",
+        "Soybean Meal \u00b7 6.8 MT \u00b7 \u26a0 Low",
         "Batch FM-20250601-003 \u00b7 QC Pending",
         "Cost/kg today \u00b7 \u20b922.40"
       ]},
@@ -1390,12 +1390,12 @@
         {name:"Farm Dispatch", desc:"Finished feed sent to the destination farm."},
         {name:"Auto Feed Stock Credit", desc:"Farm feed stock updated automatically on delivery."}
       ],
-      metrics:[
-        {value:"120+", label:"Feed Formulations Managed"},
-        {value:"850 MT", label:"Tracked per Month"},
-        {value:"\u20b922.40", label:"Avg Cost per Kg"},
-        {value:"99.2%", label:"QC Pass Rate"}
-      ],
+     metrics:[
+  {value:"6+", label:"Mills Live"},
+  {value:"~450 Tons", label:"Feed Produced / Month"},
+  {value:"₹22.40", label:"Avg Cost per Kg"},
+  {value:"99.2%", label:"QC Pass Rate"}
+],
       modules:[
         {name:"Raw Material Management", desc:"Purchase, stock, and lot-track every ingredient."},
         {name:"Feed Formulations", desc:"Build recipes with live protein and energy profiles."},
@@ -1416,11 +1416,11 @@
       sub:"PoultryOne for Chicken Suppliers digitises the live chicken supply chain: farm purchases, shop deliveries, WhatsApp bills, cash and credit ledgers, and daily P&L — all on your phone.",
       stats:["WhatsApp Bill in 10 Seconds","Daily Profit Visible Live","Credit Ledger Both Sides","Zero Paper. Zero Confusion."],
       mockup:{header:"Today's Summary \u00b7 June 1, 2025", rows:[
-        "Purchased \u00b7 2,400 kg \u00b7 \u20b92,16,000",
-        "Delivered \u00b7 2,380 kg \u00b7 \u20b92,38,000",
-        "Today's Profit \u00b7 \u20b922,000 \u00b7 \u2191",
-        "Outstanding (Shops) \u00b7 \u20b91,84,500",
-        "Bills Sent via WhatsApp \u00b7 14"
+        "Purchased \u00b7 480 kg \u00b7 \u20b943,200",
+        "Delivered \u00b7 465 kg \u00b7 \u20b947,000",
+        "Today's Profit \u00b7 \u20b93,800 \u00b7 \u2191",
+        "Outstanding (Shops) \u00b7 \u20b928,500",
+        "Bills Sent via WhatsApp \u00b7 8"
       ]},
       features:[
         {icon:"\ud83c\udfea", title:"Farm Purchase Entry", desc:"Record every bird purchase from farms: weight, rate, total amount, and payment mode (cash/credit); farm balance updates instantly."},
@@ -1441,9 +1441,9 @@
         {name:"View Daily Profit", desc:"Net profit visible before closing for the day."}
       ],
       metrics:[
-        {value:"1,200+", label:"Active Suppliers"},
-        {value:"\u20b9800Cr+", label:"Transactions Tracked"},
-        {value:"14", label:"Bills/Day Per Supplier"},
+        {value:"18+", label:"Active Suppliers"},
+        {value:"\u20b93Cr+", label:"Transactions Tracked"},
+        {value:"8", label:"Bills/Day Per Supplier"},
         {value:"< 10 Sec", label:"to WhatsApp Bill"}
       ],
       modules:[
@@ -1655,23 +1655,24 @@
   });
   
   // ---------- Counter animation ----------
-  function animateCounter(el){
-    var target = parseFloat(el.getAttribute('data-target'));
-    var suffix = el.getAttribute('data-suffix') || '';
-    var decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
-    var duration = 1400;
-    var start = null;
-    function step(ts){
-      if(!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var value = target * eased;
-      el.textContent = value.toFixed(decimals) + suffix;
-      if(progress < 1) requestAnimationFrame(step);
-      else el.textContent = target.toFixed(decimals) + suffix;
-    }
-    requestAnimationFrame(step);
+ function animateCounter(el){
+  var target = parseFloat(el.getAttribute('data-target'));
+  var prefix = el.getAttribute('data-prefix') || '';
+  var suffix = el.getAttribute('data-suffix') || '';
+  var decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
+  var duration = 1400;
+  var start = null;
+  function step(ts){
+    if(!start) start = ts;
+    var progress = Math.min((ts - start) / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    var value = target * eased;
+    el.textContent = prefix + value.toFixed(decimals) + suffix;
+    if(progress < 1) requestAnimationFrame(step);
+    else el.textContent = prefix + target.toFixed(decimals) + suffix;
   }
+  requestAnimationFrame(step);
+}
   var counterObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){
