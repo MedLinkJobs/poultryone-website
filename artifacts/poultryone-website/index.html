@@ -1136,7 +1136,7 @@ function selectProduct(pageId){
 
   function buildDropdown(){
     var html = PRODUCTS.map(function(p){
-     return '<a href="#" class="dropdown-tile" onclick="selectProduct(\''+p.id+'\');return false;">'+
+     return '<a href="#" class="dropdown-tile" onclick="window.selectProduct(\''+p.id+'\');return false;">'+
         '<span class="dropdown-icon" style="background:linear-gradient(135deg,'+p.grad[0]+','+p.grad[1]+');">'+birdSvgSmall()+'</span>'+
         '<span>'+p.name+'</span></a>';
     }).join('');
