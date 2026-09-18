@@ -1137,6 +1137,9 @@
     }).join('');
   }
 function selectProduct(pageId){
+  var dropdownParent = document.querySelector('.nav-item-dropdown');
+  dropdownParent.classList.remove('open');
+  dropdownParent.classList.add('selection-made');
   showPage(pageId);
 }
 
@@ -1656,10 +1659,11 @@ function selectProduct(pageId){
   // ---------- Products dropdown (click toggle for touch devices) ----------
   var dropdownParent = document.querySelector('.nav-item-dropdown');
   var dropdownTrigger = dropdownParent.querySelector('.nav-link');
-  dropdownTrigger.addEventListener('click', function(e){
-    e.preventDefault();
-    dropdownParent.classList.toggle('open');
-  });
+ dropdownTrigger.addEventListener('click', function(e){
+  e.preventDefault();
+  dropdownParent.classList.remove('selection-made');
+  dropdownParent.classList.toggle('open');
+});
   document.addEventListener('click', function(e){
     if(!dropdownParent.contains(e.target)) dropdownParent.classList.remove('open');
   });
