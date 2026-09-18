@@ -1137,11 +1137,8 @@
     }).join('');
   }
 function selectProduct(pageId){
-  var dropdownParent = document.querySelector('.nav-item-dropdown');
-  dropdownParent.classList.remove('open');
-  dropdownParent.classList.add('selection-made');
-
   showPage(pageId);
+}
 
   setTimeout(function(){
     dropdownParent.classList.remove('selection-made');
